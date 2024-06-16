@@ -1,0 +1,20 @@
+<div class="table">
+    <thead>
+        <tr>
+            <th>Nr.</th>
+            <th>Vardas</th>
+            <th>Pavardė</th>
+            <th>El.paštas</th>
+            <th>Telefonas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students; let i=index;">
+            <td>{{i+1}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.surname}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.phone}}</td>
+        </tr>
+    </tbody>
+</div>
