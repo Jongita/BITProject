@@ -12,4 +12,8 @@ export class StudentsService {
   public getStudents(){
     return this.http.get<Student[]>('http://localhost:5999/students/');
   }
+
+  public addStudent(student:Student){
+    return this.http.post('http://localhost:5999/students/', student);
+  }
 }

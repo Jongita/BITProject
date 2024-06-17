@@ -1,0 +1,28 @@
+<div class="card col-md-6 mt-3">
+    <div class="card-header">Prideti nauja studentą</div>
+    <div class="card-body">
+        <form (ngSubmit)="studentSubmit(f)" #f="ngForm">
+            <div class="mb-3">
+                <label for="" class="form-label">Vardas</label>
+                <input type="text" class="form-control" name="name" ngModel>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Pavardė</label>
+                <input type="text" class="form-control" name="surname" ngModel>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">El.paštas</label>
+                <input type="text" class="form-control" name="email" ngModel>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Slaptažodis</label>
+                <input type="password" class="form-control" name="password" ngModel>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Telefonas</label>
+                <input type="text" class="form-control" name="phone" ngModel>
+            </div>
+            <button class="btn btn-success" type="submit">Pridėti</button>
+        </form>
+    </div>
+</div>
