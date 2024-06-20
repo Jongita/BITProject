@@ -9,4 +9,5 @@ export interface Student extends RowDataPacket{
     password:string;
     type?:number;
     phone:string
+   
 }

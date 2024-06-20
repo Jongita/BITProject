@@ -5,5 +5,6 @@ export interface Student {
     email:string;
     password:string;
     type?:number;
-    phone:string
+    phone:string;
+    
 }

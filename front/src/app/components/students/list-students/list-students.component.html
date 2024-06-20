@@ -1,3 +1,4 @@
+<div class="card-header">Studentu sarasas</div>
 <div class="table">
     <thead>
         <tr>
@@ -15,6 +16,30 @@
             <td>{{student.surname}}</td>
             <td>{{student.email}}</td>
             <td>{{student.phone}}</td>
+        </tr>
+    </tbody>
+</div>
+<hr>
+<div class="card-header">Grupiu sarasas</div>
+<div class="table">
+    <thead>
+        <tr>
+            <th>Nr.</th>
+            <th>Pavadinimas</th>
+            <th>Kursu ID</th>
+            <th>Destytojo ID</th>
+            <th>Pradzios data</th>
+            <th>Pabaigos data</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let group of groups; let i=index;">
+            <td>{{i+1}}</td>
+            <td>{{group.name}}</td>
+            <td>{{group.course_id}}</td>
+            <td>{{group.lecturer_id}}</td>
+            <td>{{group.startdate}}</td>
+            <td>{{group.enddate}}</td>
         </tr>
     </tbody>
 </div>

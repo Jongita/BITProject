@@ -3,6 +3,7 @@ import { StudentsService } from '../../../services/students.service';
 import { Student } from '../../../models/student';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Group } from '../../../models/group';
 
 @Component({
   selector: 'app-list-students',
@@ -13,14 +14,22 @@ import { FormsModule } from '@angular/forms';
 })
 export class ListStudentsComponent {
   public students:Student[]=[];
+  public groups:Group[]=[];
 
-    private loadStudents(){
-    this.studentsService.getStudents().subscribe((data)=>{
-      this.students=data;
+  private loadStudents(){
+  this.studentsService.getStudents().subscribe((data)=>{
+    this.students=data;
+    });
+  }
+
+  private loadGroups(){
+  this.studentsService.getGroups().subscribe((data)=>{
+    this.groups=data;
     });
   }
 
    constructor (private studentsService:StudentsService){
     this.loadStudents();
+    this.loadGroups();
    }
 }
