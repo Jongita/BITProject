@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { StudentsService } from '../../../services/students.service';
-import { Student } from '../../../models/student';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Group } from '../../../models/group';
+import { GroupsService } from '../../../services/groups.service';
+import { RouterLink } from '@angular/router';
+import { Student } from '../../../models/student';
 
 @Component({
   selector: 'app-list-students',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './list-students.component.html',
   styleUrl: './list-students.component.css'
 })
 export class ListStudentsComponent {
   public students:Student[]=[];
-  public groups:Group[]=[];
 
   private loadStudents(){
   this.studentsService.getStudents().subscribe((data)=>{
@@ -22,14 +23,15 @@ export class ListStudentsComponent {
     });
   }
 
-  private loadGroups(){
-  this.studentsService.getGroups().subscribe((data)=>{
-    this.groups=data;
-    });
-  }
-
    constructor (private studentsService:StudentsService){
     this.loadStudents();
-    this.loadGroups();
    }
+
+   public deleteStudent(id:number){
+    this.studentsService.deleteStudent(id).subscribe((data)=>{
+      this.loadStudents();
+    });
+
+  }
+
 }

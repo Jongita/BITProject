@@ -1,0 +1,17 @@
+<div class="card-header">Kursu sarasas</div>
+<div class="table">
+    <thead>
+        <tr>
+            <th>Nr.</th>
+            <th>Pavadinimas</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let course of courses; let i=index;">
+            <td>{{i+1}}</td>
+            <td>{{ course.name }}</td>
+            <td></td>
+        </tr>
+    </tbody>
+</div>

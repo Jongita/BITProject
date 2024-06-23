@@ -1,0 +1,34 @@
+<div class="card mt-3">
+    <div class="card-header">Sukurti nauja grupe</div>
+    <div class="card-body">
+        <form id="ngForm" (ngSubmit)="groupSubmit(f)" #f="ngForm">
+            <h3>Grupes informacija</h3>
+            <div class="mb-3">
+                <label for="" class="form-label">Pavadinimas</label>
+                <input type="text" class="form-control" name="name" value="" ngModel>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Kursas</label>
+                <select class="form-control" name="courseId" [(ngModel)]="courseId">
+                    <option *ngFor="let course of courses; let i=index" [value]="course.id">{{ course.name }}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Destytojas</label>
+                <input type="text" class="form-control" name="lecturerId" value="" ngModel>
+                <!-- <select class="form-control">
+                    <option></option>
+                </select> -->
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Pradzios data</label>
+                <input type="date" class="form-control" name="startdate" value="" ngModel>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Pabaigos data</label>
+                <input type="date" class="form-control" name="enddate" value="" ngModel>
+            </div>
+            <button class="btn btn-success " type="submit" form="ngForm">Pridėti</button>
+        </form>
+    </div>
+</div>

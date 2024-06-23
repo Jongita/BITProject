@@ -8,6 +8,11 @@ export interface Student extends RowDataPacket{
     email:string;
     password:string;
     type?:number;
-    phone:string
+    phone:string;
+
+    groups:{
+    groupId:number
+  }[]
    
 }
+

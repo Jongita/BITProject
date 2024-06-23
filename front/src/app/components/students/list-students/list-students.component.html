@@ -7,39 +7,28 @@
             <th>Pavardė</th>
             <th>El.paštas</th>
             <th>Telefonas</th>
+            <th>Grupes</th>
+            <th>Veiksmai</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let student of students; let i=index;">
             <td>{{i+1}}</td>
-            <td>{{student.name}}</td>
-            <td>{{student.surname}}</td>
-            <td>{{student.email}}</td>
-            <td>{{student.phone}}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.surname }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.phone }}</td>
+            <td></td>
+            <td>
+                <a class="btn btn-success" [routerLink]="['/students',student.id]">Redaguoti</a>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-danger" (click)="deleteStudent(student.id!)">Istrinti</button>
+            </td>
         </tr>
     </tbody>
 </div>
 <hr>
-<div class="card-header">Grupiu sarasas</div>
-<div class="table">
-    <thead>
-        <tr>
-            <th>Nr.</th>
-            <th>Pavadinimas</th>
-            <th>Kursu ID</th>
-            <th>Destytojo ID</th>
-            <th>Pradzios data</th>
-            <th>Pabaigos data</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let group of groups; let i=index;">
-            <td>{{i+1}}</td>
-            <td>{{group.name}}</td>
-            <td>{{group.course_id}}</td>
-            <td>{{group.lecturer_id}}</td>
-            <td>{{group.startdate}}</td>
-            <td>{{group.enddate}}</td>
-        </tr>
-    </tbody>
+<div class="d-flex">
+    <a class="btn btn-success" routerLink="/students/new">
+        Prideti studenta
+    </a>
 </div>
