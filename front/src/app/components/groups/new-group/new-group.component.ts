@@ -15,7 +15,7 @@ import { Course } from '../../../models/course';
 })
 export class NewGroupComponent {
   public courses:Course[]=[];
-  public courseId:number|null=null;
+  public course_id:number|null=null;
 
   constructor (private groupsService:GroupsService, private coursesService:CoursesService, private router:Router){
     coursesService.getCourses().subscribe({
@@ -26,7 +26,7 @@ export class NewGroupComponent {
   }
 
   public groupSubmit(form:NgForm){
-    this.groupsService.addGroup({...form.form.value, courseId:this.courseId}).subscribe({
+    this.groupsService.addGroup({...form.form.value, course_id:this.course_id}).subscribe({
       next:(data)=>{
         this.router.navigate(['groups','list']);
       }

@@ -15,11 +15,20 @@ export class GroupsService {
     return this.http.get<Group[]>('http://localhost:5999/groups/');
   }
 
+  public getGroup(id:number) {
+    return this.http.get<Group>('http://localhost:5999/groups/'+id);
+  }
+
   public addGroup(group:Group){
     return this.http.post('http://localhost:5999/groups/', group);
+  }
+
+  public updateGroup(group:Group){
+    return this.http.put('http://localhost:5999/groups/', group);
   }
 
   public deleteGroup(id:number){
     return this.http.delete('http://localhost:5999/groups/'+id);
   }
+  
 }
