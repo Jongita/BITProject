@@ -1,13 +1,14 @@
 import express from 'express';
 import { StudentsController } from '../controllers/students.controller';
+import { authMiddleware } from '../middlewares/auth.middleware';
 
 const studentsRouter=express.Router();
 
-studentsRouter.get("/", StudentsController.getAllStudents);
-studentsRouter.get("/:id", StudentsController.getStudent);
-studentsRouter.post("/", StudentsController.insertStudent);
+studentsRouter.get("/", authMiddleware, StudentsController.getAllStudents);
+studentsRouter.get("/:id", authMiddleware, StudentsController.getStudent);
+studentsRouter.post("/", authMiddleware, StudentsController.insertStudent);
 
-studentsRouter.delete("/:id", StudentsController.delete);
+studentsRouter.delete("/:id", authMiddleware, StudentsController.delete);
 
 
 export {studentsRouter};

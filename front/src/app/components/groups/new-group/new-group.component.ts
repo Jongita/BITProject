@@ -5,17 +5,22 @@ import { GroupsService } from '../../../services/groups.service';
 import { Router } from '@angular/router';
 import { CoursesService } from '../../../services/courses.service';
 import { Course } from '../../../models/course';
+import { ErrorComponent } from '../../helper/error/error.component';
 
 @Component({
   selector: 'app-new-group',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ErrorComponent],
   templateUrl: './new-group.component.html',
   styleUrl: './new-group.component.css'
 })
 export class NewGroupComponent {
   public courses:Course[]=[];
   public course_id:number|null=null;
+
+  public isError=false;
+  public errorText="";
+  
 
   constructor (private groupsService:GroupsService, private coursesService:CoursesService, private router:Router){
     coursesService.getCourses().subscribe({
@@ -29,6 +34,10 @@ export class NewGroupComponent {
     this.groupsService.addGroup({...form.form.value, course_id:this.course_id}).subscribe({
       next:(data)=>{
         this.router.navigate(['groups','list']);
+      },
+      error:(error)=>{
+        this.isError=true;
+        this.errorText=error.error.text;
       }
   });
 }

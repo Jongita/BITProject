@@ -13,7 +13,14 @@ export class GroupsController{
         console.log(req.params.id);
         const sql="SELECT * FROM education.groups WHERE id=?";
         const [result]=await pool.query<Group[]>(sql, [req.params.id]);
-        res.json(result[0]);
+        if (result.length==0){
+            res.status(404).json({
+                'text': 'Pateiktas irasas nerastas'
+            })
+        } else{
+            res.json(result[0]);
+        }
+       
     }
 
 
@@ -27,10 +34,16 @@ export class GroupsController{
 
     static async updateGroup(req:any, res:any){
         const sql="UPDATE education.groups SET name=?, course_id=?, lecturer_id=?, startdate=?, enddate=? WHERE id=?;";
-        await pool.query(sql, [req.body.name, req.body.course_id, req.body.lecturer_id, req.body.startdate, req.body.enddate, req.body.id]);
-        res.json({
+        try{
+            await pool.query(sql, [req.body.name, req.body.course_id, req.body.lecturer_id, req.body.startdate, req.body.enddate, req.body.id]);
+            res.json({
                 "success":true
+        });
+        }catch(error){
+            res.status(500).json({
+                'text':'Įvyko atnaujinimo klaida'
             });
+        }
     }
 
     static async deleteGroup(req:any, res:any){

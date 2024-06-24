@@ -9,7 +9,7 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Grupė</label>
-                <select class="form-control" name="groupId" [(ngModel)]="groupId">
+                <select class="form-control" name="group_id" [(ngModel)]="group_id">
                     <option *ngFor="let group of groups; let i=index" [value]="group.id">{{ group.name }}</option>
                 </select>
             </div>

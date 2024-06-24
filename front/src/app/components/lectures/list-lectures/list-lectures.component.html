@@ -18,7 +18,7 @@
             <td>{{ lecture.date }}</td>
             <td>{{ lecture.description }}</td>
             <td>
-                <a class="btn btn-success">Redaguoti</a>&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" [routerLink]="['/lectures',lecture.id]">Redaguoti</a>&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-danger" (click)="deleteLecture(lecture.id!)">Istrinti</button>
             </td>
         </tr>

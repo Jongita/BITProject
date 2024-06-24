@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class NewLectureComponent {
   public groups:Group[]=[];
-  public groupId:number|null=null;
+  public group_id:number|null=null;
 
   constructor (private lecturesService:LecturesService, private groupsService:GroupsService, private router:Router){
    groupsService.getGroups().subscribe({
@@ -26,7 +26,7 @@ export class NewLectureComponent {
   }
 
   public lectureSubmit(form:NgForm){
-    this.lecturesService.addLecture({...form.form.value, groupId:this.groupId}).subscribe({
+    this.lecturesService.addLecture({...form.form.value, group_id:this.group_id}).subscribe({
       next:(data)=>{
         this.router.navigate(['lectures','list']);
       }

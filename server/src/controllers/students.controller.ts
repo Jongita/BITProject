@@ -36,6 +36,9 @@ export class StudentsController{
             const sql2="INSERT INTO group_student (group_id, student_id) VALUES (?, ?)";
             await pool.query(sql2, [group.groupId, insertId]);
         });
+        res.status(201).json({
+            "success":true
+        })
     }
 
        static async delete(req:any, res:any){

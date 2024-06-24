@@ -8,6 +8,11 @@ import { NewGroupComponent } from './components/groups/new-group/new-group.compo
 import { ListLecturesComponent } from './components/lectures/list-lectures/list-lectures.component';
 import { NewLectureComponent } from './components/lectures/new-lecture/new-lecture.component';
 import { UpdateGroupComponent } from './components/groups/update-group/update-group.component';
+import { UpdateLectureComponent } from './components/lectures/update-lecture/update-lecture.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { ListFilesComponent } from './components/file/list-files/list-files.component';
+import { NewFileComponent } from './components/file/new-file/new-file.component';
 
 export const routes: Routes = [
     {path: "students/list", component:ListStudentsComponent},
@@ -21,7 +26,13 @@ export const routes: Routes = [
 
     {path: "lectures/list", component:ListLecturesComponent},
     {path: "lectures/new", component:NewLectureComponent},
-  
+    {path: "lectures/:id", component:UpdateLectureComponent},
+
+    {path: "files/list", component:ListFilesComponent},
+    {path: "files/new", component:NewFileComponent},
+
+    {path: "auth/signin", component:SigninComponent},
+    {path: "auth/login", component:LoginComponent},
 
     {path: "", component:HomePageComponent}
 ];

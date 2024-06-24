@@ -6,6 +6,8 @@ import { Group } from '../../../models/group';
 import { RouterLink } from '@angular/router';
 import { CoursesService } from '../../../services/courses.service';
 import { Course } from '../../../models/course';
+import { Lecturer } from '../../../models/lecturers';
+import { LecturersService } from '../../../services/lecturers.service';
 
 @Component({
   selector: 'app-list-groups',
@@ -17,6 +19,7 @@ import { Course } from '../../../models/course';
 export class ListGroupsComponent {
   public groups:Group[]=[];
   public courses:Course[]=[];
+  public lecturers:Lecturer[]=[];
 
   private loadGroups(){
   this.groupsService.getGroups().subscribe((data)=>{
@@ -30,9 +33,17 @@ export class ListGroupsComponent {
     });
   }
 
-  constructor (private groupsService:GroupsService, private coursesService:CoursesService){
+  private loadLecturers(){
+  this.lecturersService.getLecturers().subscribe((data)=>{
+    this.lecturers=data;
+    });
+  }
+
+
+  constructor (private groupsService:GroupsService, private coursesService:CoursesService, private lecturersService:LecturersService){
     this.loadGroups();
     this.loadCourses();
+    this.loadLecturers();
   }
 
   public deleteGroup(id:number){
@@ -47,6 +58,15 @@ export class ListGroupsComponent {
     this.courses.forEach((course)=>{ 
       if (course.id==id) 
         result= course.name;
+    });
+    return result;
+  }
+
+  public getLecturerName(id:number){
+    let result="";
+    this.lecturers.forEach((lecturer)=>{ 
+      if (lecturer.id==id) 
+        result= `${lecturer.name} ${lecturer.surname}`;
     });
     return result;
   }

@@ -1,10 +1,11 @@
 import express from 'express';
 import { CoursesController } from '../controllers/courses.controller';
+import { authMiddleware } from '../middlewares/auth.middleware';
 
 const coursesRouter=express.Router();
 
 
-coursesRouter.get("/", CoursesController.getAllcourses);
+coursesRouter.get("/", authMiddleware, CoursesController.getAllcourses);
 
 
 export {coursesRouter};

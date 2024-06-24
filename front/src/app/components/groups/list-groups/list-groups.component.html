@@ -5,7 +5,7 @@
             <th>Nr.</th>
             <th>Pavadinimas</th>
             <th>Kursas</th>
-            <th>Destytojo ID</th>
+            <th>Destytojas</th>
             <th>Pradzios data</th>
             <th>Pabaigos data</th>
             <th>Veiksmai</th>
@@ -16,7 +16,7 @@
             <td>{{i+1}}</td>
             <td>{{ group.name }}</td>
             <td>{{ getCourseName(group.course_id) }}</td>
-            <td>{{ group.lecturer_id }}</td>
+            <td>{{ getLecturerName(group.lecturer_id) }}</td>
             <td>{{ group.startdate }}</td>
             <td>{{ group.enddate }}</td>
             <td>
