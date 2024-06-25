@@ -19,21 +19,14 @@ export class FilesService {
     return this.http.get<File>('http://localhost:5999/files/'+id);
   }
 
-  // public addFile(file:File){
-  //   return this.http.post('http://localhost:5999/files/', file);
-  // }
 
-  public addFileDataAndFile(file:File, fileNew:any){
+ public addFile(file:File, filesFile:any){
     const postFile=new FormData();
     postFile.append('name', file.name!);
-
-    const lectureId = file.lecture_id ? file.lecture_id.toString() : '1';
-
-    postFile.append('lecture_id', lectureId);
-    postFile.append('file', fileNew);
+    postFile.append('lecture_id', file.lecture_id.toString());
+    postFile.append('file', filesFile);
     postFile.append('visibility', file.visibility!);
     return this.http.post('http://localhost:5999/files/'+file.id, postFile);
-
   }
 
   public updateFile(file:File){

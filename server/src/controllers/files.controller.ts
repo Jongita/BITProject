@@ -24,9 +24,10 @@ export class FilesController{
     }
 
     static async insertFile(req:any, res:any){
+        console.log(req.body);
         const url=req.protocol+"://"+req.get("host")+"/img/"+req.file.filename ;
         const sql="INSERT INTO education.files (lecture_id, name, file, visibility) VALUES ( ?, ?, ?, ?);";
-        await pool.query(sql, [req.body.lecture_id, req.body.name, url, req.body.file, req.body.visibility]);
+        await pool.query(sql, [req.body.lecture_id, req.body.name, url, req.body.visibility]);
         res.status(201).json({
             "success":true
         })

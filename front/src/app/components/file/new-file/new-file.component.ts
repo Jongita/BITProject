@@ -35,32 +35,25 @@ export class NewFileComponent {
     this.loadLectures();
   }
 
-  public onSubmitForm(){
-  console.log(this.fileForm.value);
+   public onSubmitForm(){
+    console.log(this.fileForm.value);
     const values=this.fileForm.value;
-    this.filesService.addFileDataAndFile(new File(values.name, values.id, values.lecture_id, values.visibility ), values.file).subscribe((result)=>{
+    this.filesService.addFile(new File(values.name, values.lecture_id, values.visibility), values.file).subscribe((result)=>{
       this.router.navigate(["/"]);
     });
-
-    // this.filesService.addFile(this.fileForm.value).subscribe({
-    //   next:(result)=>{
-    //     this.router.navigate(['files','list']);
-    //   }
-    // })
- 
   }
   
   public onFileChange(event:Event){
-  const fileNew= (event.target as HTMLInputElement).files![0];
+  const filesFile= (event.target as HTMLInputElement).files![0];
 
     const reader=new FileReader();
     reader.onload=()=>{
       this.filePreview=reader.result as String;
     }
-    reader.readAsDataURL(fileNew);
+    reader.readAsDataURL(filesFile);
 
     this.fileForm.patchValue({
-      file:fileNew
+      file:filesFile
     });
     this.fileForm.get("file")?.updateValueAndValidity();
   }

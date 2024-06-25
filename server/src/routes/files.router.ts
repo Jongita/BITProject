@@ -1,5 +1,4 @@
 import express from 'express';
-import { LecturesController } from '../controllers/lectures.controller';
 import { authMiddleware } from '../middlewares/auth.middleware';
 import { FilesController } from '../controllers/files.controller';
 import multer from 'multer';

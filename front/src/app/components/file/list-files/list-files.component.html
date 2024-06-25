@@ -14,7 +14,7 @@
             <td>{{i+1}}</td>
             <td>{{ getLectureName(file.lecture_id) }}</td>
             <td>{{ file.name }}</td>
-            <td>{{ file.file }}</td>
+            <td><a [href]="file.file" style="max-width: 100px;" class="btn">Parsisiųsti failą </a></td>
             <td>
                 <a class="btn btn-success">Redaguoti</a>&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-danger">Ištrinti</button>
