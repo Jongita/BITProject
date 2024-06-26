@@ -14,10 +14,12 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { ListFilesComponent } from './components/file/list-files/list-files.component';
 import { NewFileComponent } from './components/file/new-file/new-file.component';
 import { ProfileComponent } from './components/users/profile/profile.component';
+import { viewGuard } from './guards/view.guard';
+import { editUsersGuard } from './guards/edit-users.guard';
 
 export const routes: Routes = [
-    {path: "students/list", component:ListStudentsComponent},
-    {path: "students/new", component:NewStudentComponent},
+    {path: "students/list", component:ListStudentsComponent, canActivate:[viewGuard]},
+    {path: "students/new", component:NewStudentComponent, canActivate:[editUsersGuard]},
 
     {path: "groups/list", component:ListGroupsComponent},
     {path: "groups/new", component:NewGroupComponent},
@@ -35,7 +37,7 @@ export const routes: Routes = [
     {path: "auth/signin", component:SigninComponent},
     {path: "auth/login", component:LoginComponent},
 
-    {path:"profile", component:ProfileComponent},
+    {path:"users/profile", component:ProfileComponent, canActivate:[viewGuard]},
 
     {path: "", component:HomePageComponent}
 ];

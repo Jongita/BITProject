@@ -19,7 +19,7 @@ export class StudentsController{
             result[i].groups=groups;
             console.log(groups);
        };
-        console.log(result);
+       
         res.json(result);
    
     }

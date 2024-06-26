@@ -15,7 +15,6 @@ import { CommonModule } from '@angular/common';
 })
 export class ProfileComponent {
   public profileForm:FormGroup;
- 
 
   constructor (private userService:UsersService, private authService:AuthService, private router:Router){
     this.profileForm=new FormGroup({
@@ -28,25 +27,27 @@ export class ProfileComponent {
   
     if (authService.user!=null && authService.user.id!=null){
       userService.getUser(authService.user.id).subscribe((user)=>{
-       
-        this.profileForm.setValue({
+          this.profileForm.setValue({
           name:user.name,
           surname:user.surname,
           email:user.email,
           password:"",
           phone:user.phone
         });
-        this.profileForm.updateValueAndValidity();;
+        this.profileForm.updateValueAndValidity();
       });
     }
   }
 
   public onSubmitForm(){
     const values=this.profileForm.value;
-    console.log(values);
-  
+    
+    this.userService.updateUser(new User(values.email, this.authService.user!.id, values.name, values.name, values.password, values.phone )).subscribe((result)=>{
+      this.router.navigate(["/"]);
+    });
 
   }
+
   
 
 }

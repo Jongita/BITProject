@@ -17,7 +17,9 @@ export class UsersService {
         usersO.push( new User(user.email, user.id, user.name, user.surname, user.password, user.type, user.token, user.phone) );
       });
       return usersO;
+     
     }));
+   
   }
 
   public getUser(id:number){
@@ -27,6 +29,10 @@ export class UsersService {
           return new User(user.email, user.id, user.name, user.surname, user.password, user.type, user.token, user.phone);
         })
       );
+    }
+  
+    public updateUser(user:User){
+    return this.http.put('http://localhost:5999/users/'+user.id, user);
   }
 
   public deleteUser(id:number){
