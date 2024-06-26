@@ -18,7 +18,22 @@
             <td>{{ student.surname }}</td>
             <td>{{ student.email }}</td>
             <td>{{ student.phone }}</td>
-            <td></td>
+            <td>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Pavadinimas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let group of student.groups; let y=index">
+                            <td>
+                                {{ group.name }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
             <td>
                 <a class="btn btn-success" [routerLink]="['/students',student.id]">Redaguoti</a>&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-danger" (click)="deleteStudent(student.id!)">Istrinti</button>

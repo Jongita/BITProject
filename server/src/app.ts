@@ -8,6 +8,7 @@ import { lecturersRouter } from './routes/lecturers.router';
 import { authRouter } from './routes/auth.router';
 import { filesRouter } from './routes/files.router';
 import path from 'path';
+import { userRouter } from './routes/user.router';
 
 
 
@@ -28,6 +29,7 @@ app.use('/courses', coursesRouter);
 app.use('/lectures', lecturesRouter);
 app.use('/files', filesRouter);
 app.use('/auth', authRouter);
+app.use('/users', userRouter);
 
 
 export {app};

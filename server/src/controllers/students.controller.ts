@@ -1,5 +1,6 @@
 import { pool } from "../db/connect";
-import { Student } from "../models/students";
+import { Student, StudentGroups } from "../models/students";
+import bcrypt from "bcrypt";
 
 
 
@@ -8,8 +9,21 @@ export class StudentsController{
 
         const sql="SELECT * FROM users WHERE type = 2";
         const [result]=await pool.query<Student[]>(sql);
+
+        for (let i=0; i<result.length; i++){
+            // paprastesnis budas
+            // const sql2="SELECT product_id as productId, count FROM orders_products WHERE order_id=?";
+            // geresnis budas
+            const sql2="SELECT gs.group_id as groupId, g.name FROM education.group_student gs LEFT JOIN education.groups g ON gs.group_id=g.id WHERE student_id=?";   
+            const [groups]=await pool.query<StudentGroups[]>(sql2, [result[i].id]);
+            result[i].groups=groups;
+            console.log(groups);
+       };
+        console.log(result);
         res.json(result);
+   
     }
+
 
     static async getStudent( req:any, res:any){
     
@@ -27,9 +41,12 @@ export class StudentsController{
 
     static async insertStudent(req:any, res:any){
         const student:Student=req.body;
+        let password=student.password;
+        password=await bcrypt.hash(password, 12)
+
 
         const sql="INSERT INTO users (name, surname, email, password, type, phone) VALUES ( ?, ?, ?, ?, ?, ? )";
-        const [result, fields]=await pool.query(sql, [student.name, student.surname, student.email, student.password, 2, student.phone]);
+        const [result, fields]=await pool.query(sql, [student.name, student.surname, student.email, password, 2, student.phone]);
         const insertId=(result as any).insertId;
        
         student.groups.forEach(async (group)=>{
@@ -42,7 +59,10 @@ export class StudentsController{
     }
 
        static async delete(req:any, res:any){
-        const sql="DELETE FROM users WHERE id=?";
+        let sql="DELETE FROM group_student WHERE student_id=?";
+        await pool.query(sql, [req.params.id]);
+
+        sql="DELETE FROM users WHERE id=?";
         await pool.query(sql, [req.params.id]);
         res.json({
             "success":true
@@ -51,9 +71,6 @@ export class StudentsController{
 
 }
     
-
-
-
 
 
         // const sql2="INSERT INTO group_student (group_id, student_id) VALUES (?, (SELECT id FROM users WHERE email = ?));";

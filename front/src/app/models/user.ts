@@ -8,6 +8,19 @@ export class User{
     public password?:string,
     public type?:number,
     public token?:string,
-    public phone?:string
+    public phone?:string,
     ){}
+
+//     public getTypeName():String{
+//         switch (this.type){
+//             case 0:
+//                 return "Super administratorius"
+//             case 1:
+//                 return "Administratorius";
+//             case 2: 
+//                 return "Vartotojas";
+//         }
+//         return "Nezinomas";   
+
+// }
 }

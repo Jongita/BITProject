@@ -18,6 +18,7 @@ export class NewFileComponent {
   public fileForm:FormGroup;
   public filePreview:String|null=null;
   public lectures:Lecture[]=[];
+ 
 
   private loadLectures(){
   this.lecturesService.getLectures().subscribe((data)=>{
@@ -25,6 +26,7 @@ export class NewFileComponent {
     });
   }
 
+ 
   constructor(private filesService:FilesService, private lecturesService:LecturesService, private router:Router){
     this.fileForm=new FormGroup({
       'lecture_id':new FormControl(null),
@@ -40,6 +42,7 @@ export class NewFileComponent {
     const values=this.fileForm.value;
     this.filesService.addFile(new File(values.name, values.lecture_id, values.visibility), values.file).subscribe((result)=>{
       this.router.navigate(["/"]);
+    
     });
   }
   
@@ -58,6 +61,7 @@ export class NewFileComponent {
     this.fileForm.get("file")?.updateValueAndValidity();
   }
 
+  
 }
 
   

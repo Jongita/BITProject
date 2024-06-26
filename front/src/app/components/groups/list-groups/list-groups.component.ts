@@ -20,6 +20,7 @@ export class ListGroupsComponent {
   public groups:Group[]=[];
   public courses:Course[]=[];
   public lecturers:Lecturer[]=[];
+  
 
   private loadGroups(){
   this.groupsService.getGroups().subscribe((data)=>{

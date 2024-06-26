@@ -64,7 +64,7 @@ export class AuthController{
             'email':user.email,
             'phone':user.phone,
             'type':user.type,
-            'token': token
+            'token': token,
         })
     }
     }

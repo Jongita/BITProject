@@ -1,0 +1,29 @@
+<div class="card mt-3">
+    <div class="card-header">Mano vartotojas</div>
+    <div class="card-body">
+        <form action="" [formGroup]="profileForm" (ngSubmit)="onSubmitForm()">
+            <div class="mb-3">
+                <label for="" class="form-label">Mano vardas</label>
+                <input type="text" name="" class="form-control" formControlName="name">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Mano pavardė</label>
+                <input type="text" name="" class="form-control" formControlName="surname">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">El. pašto adresas</label>
+                <input type="text" name="" class="form-control" formControlName="email">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Slaptažodis</label>
+                <input type="password" name="" class="form-control" formControlName="password">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Telefono Nr.</label>
+                <input type="text" name="" class="form-control" formControlName="phone">
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-success">Išsaugoti pakeitimus</button>
+        </form>
+    </div>
+</div>

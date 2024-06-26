@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ErrorComponent } from '../../helper/error/error.component';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  public isError = false;
+  public errorText="";
 
   constructor (private authService:AuthService, private router:Router){
 
@@ -21,6 +24,12 @@ export class LoginComponent {
       next: (data)=>{
         console.log(data);
         this.router.navigate(['/'])
+      },
+      error: (error)=>{
+        console.log(error.error.text);
+        this.isError=true;
+        this.errorText=error.error.text
+
       }
     })
   }

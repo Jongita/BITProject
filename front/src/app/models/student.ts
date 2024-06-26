@@ -9,10 +9,14 @@ export class Student {
     public id?:number,
     public type?:number,
     public phone?:string,
-    public assignedGroups?:{
-    groupId:number
-  }
+    public groups?:{
+    groupId:number,
+    name:string
+  }[]
   
-    ){}
+  ){}
    
 }
+
+
+// assignedGroups

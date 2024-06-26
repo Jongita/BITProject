@@ -13,6 +13,7 @@ import { SigninComponent } from './components/auth/signin/signin.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { ListFilesComponent } from './components/file/list-files/list-files.component';
 import { NewFileComponent } from './components/file/new-file/new-file.component';
+import { ProfileComponent } from './components/users/profile/profile.component';
 
 export const routes: Routes = [
     {path: "students/list", component:ListStudentsComponent},
@@ -33,6 +34,8 @@ export const routes: Routes = [
 
     {path: "auth/signin", component:SigninComponent},
     {path: "auth/login", component:LoginComponent},
+
+    {path:"profile", component:ProfileComponent},
 
     {path: "", component:HomePageComponent}
 ];
