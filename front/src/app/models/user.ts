@@ -7,8 +7,8 @@ export class User{
     public surname?:string,
     public password?:string,
     public type?:number,
-    public token?:string,
     public phone?:string,
+    public token?:string
     ){}
 
 //     public getTypeName():String{

@@ -9,6 +9,9 @@ import { authRouter } from './routes/auth.router';
 import { filesRouter } from './routes/files.router';
 import path from 'path';
 import { userRouter } from './routes/user.router';
+import { studentGroupsRouter } from './routes/studentGroup.router';
+
+
 
 
 
@@ -30,6 +33,7 @@ app.use('/lectures', lecturesRouter);
 app.use('/files', filesRouter);
 app.use('/auth', authRouter);
 app.use('/users', userRouter);
+app.use('/', studentGroupsRouter);
 
 
 export {app};

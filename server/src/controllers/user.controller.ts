@@ -54,7 +54,7 @@ export class UserController{
                 req.body.surname,
                 req.body.email,
                 passwordHash,
-                req.body.type,
+                '2',
                 req.body.phone,
                 userId
             ]);
@@ -63,7 +63,7 @@ export class UserController{
                 req.body.name,
                 req.body.surname,
                 req.body.email,
-                req.body.type,
+                '2',
                 req.body.phone,
                 userId
             ]);
@@ -72,13 +72,6 @@ export class UserController{
             success:true
         });
 
-    }
-
-    static async delete(req:any, res:any){
-        await pool.query("DELETE FROM users WHERE id=?",[req.params.id]);
-        res.json({
-            success:true
-        });
     }
 }
 

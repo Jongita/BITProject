@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Group } from '../models/group';
+import { studentGroup } from '../models/studentGroups';
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +32,8 @@ export class GroupsService {
     return this.http.delete('http://localhost:5999/groups/'+id);
   }
   
+   public getStudentGroup(id:number) {
+    return this.http.get<studentGroup>('http://localhost:5999/'+id);
+
+  }
 }

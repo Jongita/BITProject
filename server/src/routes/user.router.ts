@@ -8,7 +8,7 @@ const userRouter=express.Router();
 userRouter.get("/", authMiddleware, UserController.getAll);
 userRouter.get("/:id", authMiddleware, UserController.getUser);
 userRouter.put("/:id", authMiddleware, UserController.update);
-userRouter.delete("/:id", authMiddleware, UserController.delete);
+
 
 
 export {userRouter}

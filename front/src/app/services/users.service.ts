@@ -14,7 +14,7 @@ export class UsersService {
     return this.http.get<User[]>('http://localhost:5999/users/').pipe(map((users)=>{
       const usersO:User[]=[];
       users.forEach((user)=>{
-        usersO.push( new User(user.email, user.id, user.name, user.surname, user.password, user.type, user.token, user.phone) );
+        usersO.push( new User(user.email, user.id, user.name, user.surname, user.password, user.type, user.phone, user.token));
       });
       return usersO;
      
@@ -22,21 +22,22 @@ export class UsersService {
    
   }
 
-  public getUser(id:number){
-    return this.http.get<User>('http://localhost:5999/users/'+id).pipe(
-      map(
-        (user)=>{
-          return new User(user.email, user.id, user.name, user.surname, user.password, user.type, user.token, user.phone);
-        })
-      );
+  // public getUser(id:number){
+  //   return this.http.get<User>('http://localhost:5999/users/'+id).pipe(
+  //     map(
+  //       (user)=>{
+  //         return new User(user.email, user.id, user.name, user.surname, user.password, user.type, user.phone, user.token);
+  //       })
+  //     );
+  //   }
+
+    public getUser(id:number){
+    return this.http.get<User>('http://localhost:5999/users/'+id);
     }
   
     public updateUser(user:User){
     return this.http.put('http://localhost:5999/users/'+user.id, user);
   }
 
-  public deleteUser(id:number){
-    return this.http.delete('http://localhost:5999/users/'+id);
-  }
 }
 

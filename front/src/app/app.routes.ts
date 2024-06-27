@@ -40,4 +40,5 @@ export const routes: Routes = [
     {path:"users/profile", component:ProfileComponent, canActivate:[viewGuard]},
 
     {path: "", component:HomePageComponent}
+  
 ];

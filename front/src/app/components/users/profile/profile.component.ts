@@ -41,8 +41,8 @@ export class ProfileComponent {
 
   public onSubmitForm(){
     const values=this.profileForm.value;
-    
-    this.userService.updateUser(new User(values.email, this.authService.user!.id, values.name, values.name, values.password, values.phone )).subscribe((result)=>{
+    console.log(values);
+    this.userService.updateUser(new User(values.email, this.authService.user!.id, values.name, values.surname, values.password, values.phone )).subscribe((result)=>{
       this.router.navigate(["/"]);
     });
 
