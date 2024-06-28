@@ -28,7 +28,7 @@ export class ListLecturesComponent {
   private loadLectures(){
   this.lecturesService.getLectures().subscribe((data)=>{
     this.lectures=data;
-  
+    console.log(this.lectures);
     });
   }
 

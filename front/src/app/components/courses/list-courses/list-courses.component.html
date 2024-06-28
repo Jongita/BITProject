@@ -1,4 +1,4 @@
-<div class="card-header">Kursu sarasas</div>
+<!-- <div class="card-header">Kursu sarasas</div>
 <div class="table">
     <thead>
         <tr>
@@ -14,4 +14,15 @@
             <td></td>
         </tr>
     </tbody>
+</div> -->
+
+<div class="container text-center">
+    <div class="card-header">Kursai</div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-12 text-center">
+            <div class="d-inline-block mx-2" *ngFor="let course of courses; let i=index;">
+                <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br />{{ course.name }}</a>
+            </div>
+        </div>
+    </div>
 </div>

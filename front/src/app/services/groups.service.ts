@@ -33,7 +33,7 @@ export class GroupsService {
   }
   
    public getStudentGroup(id:number) {
-    return this.http.get<studentGroup>('http://localhost:5999/'+id);
+    return this.http.get<studentGroup[]>('http://localhost:5999/'+id);
 
   }
 }

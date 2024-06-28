@@ -7,6 +7,7 @@ export class LecturesController{
         const sql="SELECT * FROM education.lectures;";
         const [result]=await pool.query<Lecture[]>(sql);
         res.json(result);
+        console.log(result);
      
     }
 

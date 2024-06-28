@@ -16,6 +16,7 @@ export class StudentGroupsController{
             })
         } else{
             res.json(result);
+            console.log(result);
         }
 
 }

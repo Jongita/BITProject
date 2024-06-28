@@ -1,15 +1,9 @@
-<!-- <div class="card-header">Paskaitų sąrašas</div>
-<div class="table">
-    <thead>
-        <tr>
-            <th>Nr.</th>
-            <th>Pavadinimas</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let studentGroup of studentGroups[0]; let i=index;">
-            <td>{{i+1}}</td>
-            <td>{{ studentGroup.name }}</td>
-        </tr>
-    </tbody>
-</div> -->
+<div class="container">
+    <div class="row justify-content-center mt-3">
+        <div class="col-12 text-center">
+            <div class="d-inline-block mx-2" *ngFor="let studentGroup of studentGroups;">
+                <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br />{{studentGroup.name}}</a>
+            </div>
+        </div>
+    </div>
+</div>
