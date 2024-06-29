@@ -52,4 +52,12 @@ export class ListLecturesComponent {
     });
     return result;
   }
+
+  public lectureDate(lecturedate:Date){
+    const date = new Date(lecturedate);
+        const year = date.getUTCFullYear();
+        const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+        const day = (date.getUTCDate() + 1).toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+}
 }
