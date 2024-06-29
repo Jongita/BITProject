@@ -16,12 +16,19 @@
     </tbody>
 </div> -->
 
+<div class="d-flex justify-content-center mt-3">
+    <a class="btn btn-success" routerLink="/courses/new">
+        Pridėti naują kursą
+    </a>
+</div>
+
 <div class="container text-center">
     <div class="card-header">Kursai</div>
     <div class="row justify-content-center mt-3">
         <div class="col-12 text-center">
-            <div class="d-inline-block mx-2" *ngFor="let course of courses; let i=index;">
-                <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br />{{ course.name }}</a>
+            <div class="d-inline-block mx-2 mt-3" *ngFor="let course of courses; let i=index;">
+                <a class="btn btn-warning" [routerLink]="['/courses',course.id]">{{ course.name }}</a>
+                <button class="btn btn-danger" (click)="deleteCourse(course.id!)">Ištrinti</button>
             </div>
         </div>
     </div>

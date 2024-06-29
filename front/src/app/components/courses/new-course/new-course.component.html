@@ -1,0 +1,13 @@
+<div class="card mt-3">
+    <div class="card-header">Sukurti naują kursą</div>
+    <div class="card-body">
+        <form id="ngForm" (ngSubmit)="courseSubmit(f)" #f="ngForm">
+            <h3>Kursas</h3>
+            <div class="mb-3">
+                <label for="" class="form-label">Pavadinimas</label>
+                <input type="text" class="form-control" name="name" value="" ngModel>
+            </div>
+            <button class="btn btn-success " type="submit" form="ngForm">Pridėti</button>
+        </form>
+    </div>
+</div>

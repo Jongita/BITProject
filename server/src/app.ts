@@ -10,6 +10,7 @@ import { filesRouter } from './routes/files.router';
 import path from 'path';
 import { userRouter } from './routes/user.router';
 import { studentGroupsRouter } from './routes/studentGroup.router';
+import { studentFilesRouter } from './routes/studentFiles.router';
 
 
 
@@ -33,7 +34,8 @@ app.use('/lectures', lecturesRouter);
 app.use('/files', filesRouter);
 app.use('/auth', authRouter);
 app.use('/users', userRouter);
-app.use('/', studentGroupsRouter);
+app.use('/studentInfo', studentGroupsRouter);
+app.use('/studentFiles', studentFilesRouter);
 
 
 export {app};

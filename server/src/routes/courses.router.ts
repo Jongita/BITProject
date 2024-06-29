@@ -6,6 +6,9 @@ const coursesRouter=express.Router();
 
 
 coursesRouter.get("/", authMiddleware, CoursesController.getAllcourses);
-
+coursesRouter.get("/:id", authMiddleware, CoursesController.getCourse);
+coursesRouter.post("/", authMiddleware, CoursesController.insertCourse);
+coursesRouter.put("/", authMiddleware, CoursesController.updateCourse);
+coursesRouter.delete("/:id", authMiddleware, CoursesController.deleteCourse);
 
 export {coursesRouter};

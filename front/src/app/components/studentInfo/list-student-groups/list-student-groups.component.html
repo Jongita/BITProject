@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row justify-content-center mt-3">
+        <div class="col-12">
+            <div class="d-inline-block mx-2" *ngFor="let studentGroup of studentGroups;">
+                <a class="btn btn-warning btn-lg" role="button" [routerLink]="['/studentFiles',studentGroup.id]"><span class="glyphicon glyphicon-bookmark"></span> <br />{{studentGroup.name}}</a>
+                <!-- <a class="btn btn-success" [routerLink]="['/studentsInfo',studentGroup.id]">{{studentGroup.name}}</a>&nbsp;&nbsp;&nbsp; -->
+            </div>
+        </div>
+    </div>
+</div>

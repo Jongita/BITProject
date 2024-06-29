@@ -18,7 +18,7 @@ const storageFiles=multer.diskStorage({
     filename: (req, file, cb)=>{
         const userId=req.params.id;
         const fileName="p_"+userId+"_"+Date.now()+".jpg";
-
+       
         cb(null, fileName)
     }
 })

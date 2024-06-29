@@ -15,19 +15,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
-  public studentGroups:studentGroup[]=[];
-  
 
-constructor (private route:ActivatedRoute, private router:Router, private groupsService:GroupsService, authService:AuthService){
-  if (authService.user!=null && authService.user.id!=null){
-  this.groupsService.getStudentGroup(authService.user.id).subscribe((data) => {
-  this.studentGroups = data;
-    console.log(data);
-});
-  }
-}
-
-    
-    
 }
 

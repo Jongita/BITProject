@@ -6,3 +6,14 @@ export interface studentGroups extends RowDataPacket{
     name:string;
 
 }
+
+
+export interface lectureAndFiles extends RowDataPacket{
+    id?:number;
+    lecture:string;
+    date:Date;
+    filename:string;
+    file:string;
+    groupId?:number;
+}
+

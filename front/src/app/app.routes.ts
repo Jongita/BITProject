@@ -16,17 +16,23 @@ import { NewFileComponent } from './components/file/new-file/new-file.component'
 import { ProfileComponent } from './components/users/profile/profile.component';
 import { viewGuard } from './guards/view.guard';
 import { editUsersGuard } from './guards/edit-users.guard';
+import { ListStudentGroupsComponent } from './components/studentInfo/list-student-groups/list-student-groups.component';
+import { FilesComponent } from './components/studentInfo/files/files.component';
+import { NewCourseComponent } from './components/courses/new-course/new-course.component';
+import { UpdateCourseComponent } from './components/courses/update-course/update-course.component';
 
 export const routes: Routes = [
     {path: "students/list", component:ListStudentsComponent, canActivate:[viewGuard]},
-    {path: "students/new", component:NewStudentComponent, canActivate:[editUsersGuard]},
+    {path: "students/new", component:NewStudentComponent},
 
     {path: "groups/list", component:ListGroupsComponent},
     {path: "groups/new", component:NewGroupComponent},
     {path: "groups/:id", component:UpdateGroupComponent},
   
     {path: "courses/list", component:ListCoursesComponent},
-
+    {path: "courses/new", component:NewCourseComponent},
+    {path: "courses/:id", component:UpdateCourseComponent},
+   
     {path: "lectures/list", component:ListLecturesComponent},
     {path: "lectures/new", component:NewLectureComponent},
     {path: "lectures/:id", component:UpdateLectureComponent},
@@ -39,6 +45,9 @@ export const routes: Routes = [
 
     {path:"users/profile", component:ProfileComponent, canActivate:[viewGuard]},
 
+    {path:"studentsInfo/list", component:ListStudentGroupsComponent, canActivate:[viewGuard]},
+    {path:"studentFiles/:id", component:FilesComponent, canActivate:[viewGuard]},
+  
     {path: "", component:HomePageComponent}
   
 ];

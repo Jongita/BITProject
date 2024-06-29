@@ -1,0 +1,21 @@
+<div class="card-header">Failu sarasas</div>
+<div class="table">
+    <thead>
+        <tr>
+            <th>Nr.</th>
+            <th>Paskaita</th>
+            <th>Data</th>
+            <th>Failo pavadinimas</th>
+            <th>Failas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let lectureAndFile of lectureAndFiles; let i=index;">
+            <td>{{i+1}}</td>
+            <td>{{lectureAndFile.lecture}}</td>
+            <td>{{lectureAndFile.date}}</td>
+            <td>{{lectureAndFile.fileName}}</td>
+            <td><a [href]="lectureAndFile.file" style="max-width: 100px;" role="button" class="btn btn-success">Parsisiųsti failą </a></td>
+        </tr>
+    </tbody>
+</div>

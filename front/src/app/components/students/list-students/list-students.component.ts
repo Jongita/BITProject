@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { StudentsService } from '../../../services/students.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgForm } from '@angular/forms';
-import { Group } from '../../../models/group';
-import { GroupsService } from '../../../services/groups.service';
+import { FormsModule} from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Student } from '../../../models/student';
 

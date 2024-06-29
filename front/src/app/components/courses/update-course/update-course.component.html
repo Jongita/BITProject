@@ -1,0 +1,12 @@
+<app-error [isError]="isError" [text]="errorText"></app-error>
+
+<div class="card-header">Redaguoti kursą</div>
+<div *ngIf="!isError" class="card-body">
+    <form id="ngForm" (ngSubmit)="courseSubmit(f)" #f="ngForm">
+        <div class="mb-3">
+            <label for="" class="form-label">Pavadinimas</label>
+            <input type="text" class="form-control" name="name" value="" ngModel [(ngModel)]="name">
+        </div>
+        <button class="btn btn-success" type="submit">Atnaujinti</button>
+    </form>
+</div>

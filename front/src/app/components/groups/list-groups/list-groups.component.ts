@@ -25,6 +25,7 @@ export class ListGroupsComponent {
   private loadGroups(){
   this.groupsService.getGroups().subscribe((data)=>{
     this.groups=data;
+    console.log(data);
     });
   }
 

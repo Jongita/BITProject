@@ -11,7 +11,22 @@ export class CoursesService {
     
   }
 
-    public getCourses(){
+  public getCourses(){
     return this.http.get<Course[]>('http://localhost:5999/courses/');
+  }
+  public getCourse(id:number) {
+    return this.http.get<Course>('http://localhost:5999/courses/'+id);
+  }
+
+  public addCourse(course:Course){
+    return this.http.post('http://localhost:5999/courses/', course);
+  }
+
+  public updateCourse(course:Course){
+    return this.http.put('http://localhost:5999/courses/', course);
+  }
+
+  public deleteCourse(id:number){
+    return this.http.delete('http://localhost:5999/courses/'+id);
   }
 }
