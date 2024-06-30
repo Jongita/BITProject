@@ -7,12 +7,12 @@ import { CoursesService } from '../../../services/courses.service';
 import { Course } from '../../../models/course';
 import { LecturersService } from '../../../services/lecturers.service';
 import { Lecturer } from '../../../models/lecturers';
-import { ErrorComponent } from '../../helper/error/error.component';
+import { ErrorService } from '../../../services/error.service';
 
 @Component({
   selector: 'app-update-group',
   standalone: true,
-  imports: [CommonModule, FormsModule, ErrorComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './update-group.component.html',
   styleUrl: './update-group.component.css'
 })
@@ -28,10 +28,7 @@ export class UpdateGroupComponent {
     public enddate:Date=new Date;
     public id?:number;
 
-    public isError = false;
-    public errorText="";
-
-  constructor (private route:ActivatedRoute, private router:Router, private groupsService:GroupsService, private coursesService:CoursesService, private lecturersService:LecturersService){
+  constructor (private route:ActivatedRoute, private router:Router, private groupsService:GroupsService, private coursesService:CoursesService, private lecturersService:LecturersService, private errorService:ErrorService){
      coursesService.getCourses().subscribe({
       next:(courses)=>{
         this.courses=courses;
@@ -54,9 +51,7 @@ export class UpdateGroupComponent {
       this.enddate=group.enddate;
     },
     error:(error)=>{
-      console.log(error);
-      this.isError=true;
-      this.errorText=error.error.text
+     this.errorService.errorEmitter.emit(error.error.text);
     }
   })
   }
@@ -67,8 +62,7 @@ export class UpdateGroupComponent {
         this.router.navigate(['groups', 'list']);
       },
       error:(error)=>{
-        this.isError=true;
-        this.errorText=error.error.text;
+        this.errorService.errorEmitter.emit(error.error.text);
       }
     })
   }

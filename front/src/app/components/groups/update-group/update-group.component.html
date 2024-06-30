@@ -1,7 +1,5 @@
-<app-error [isError]="isError" [text]="errorText"></app-error>
-
 <div class="card-header">Atnaujinti grupės informaciją</div>
-<div *ngIf="!isError" class="card-body">
+<div class="card-body">
     <form id="ngForm" (ngSubmit)="groupSubmit(f)" #f="ngForm">
 
         <div class="mb-3">

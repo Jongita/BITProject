@@ -3,7 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ErrorComponent } from '../../helper/error/error.component';
+import { ErrorService } from '../../../services/error.service';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +13,8 @@ import { ErrorComponent } from '../../helper/error/error.component';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  public isError = false;
-  public errorText="";
 
-  constructor (private authService:AuthService, private router:Router){
+  constructor (private authService:AuthService, private router:Router, private errorService:ErrorService){
 
   }
   public onLogin(form:NgForm){
@@ -27,8 +25,7 @@ export class LoginComponent {
       },
       error: (error)=>{
         console.log(error.error.text);
-        this.isError=true;
-        this.errorText=error.error.text
+        this.errorService.errorEmitter.emit(error.error.text)
 
       }
     })

@@ -4,11 +4,12 @@ import { CoursesService } from '../../../services/courses.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ErrorComponent } from '../../helper/error/error.component';
 import { CommonModule } from '@angular/common';
+import { ErrorService } from '../../../services/error.service';
 
 @Component({
   selector: 'app-update-course',
   standalone: true,
-  imports: [ErrorComponent, FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './update-course.component.html',
   styleUrl: './update-course.component.css'
 })
@@ -16,10 +17,7 @@ export class UpdateCourseComponent {
     public name:string="";
     public id?:number;
 
-    public isError = false;
-    public errorText="";
-
-  constructor (private route:ActivatedRoute, private router:Router, private coursesService:CoursesService){
+  constructor (private route:ActivatedRoute, private router:Router, private coursesService:CoursesService, private errorService:ErrorService){
     this.coursesService.getCourse(this.route.snapshot.params['id']).subscribe({
       next:(course)=>{
       this.id=course.id;
@@ -28,8 +26,7 @@ export class UpdateCourseComponent {
     },
     error:(error)=>{
       console.log(error);
-      this.isError=true;
-      this.errorText=error.error.text
+      this.errorService.errorEmitter.emit(error.error.text)
     }
   })
   }
@@ -41,8 +38,7 @@ export class UpdateCourseComponent {
         this.router.navigate(['courses', 'list']);
       },
       error:(error)=>{
-        this.isError=true;
-        this.errorText=error.error.text;
+        this.errorService.errorEmitter.emit(error.error.text)
       }
     })
   }
