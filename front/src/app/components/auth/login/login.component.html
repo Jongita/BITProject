@@ -1,4 +1,4 @@
-<!-- <div class="row mt-3">
+<div class="row mt-3">
     <div class="col-md-6 offset-md-3">
         <div class="card">
             <div class="card-header">Prisijungti prie sistemos</div>
@@ -6,20 +6,26 @@
                 <form (ngSubmit)="onLogin(f)" #f="ngForm">
                     <div class="mb-3">
                         <label class="form-label" for="">El.pasto adresas</label>
-                        <input type="text" name="email" class="form-control" ngModel required maxlength="64" email>
+                        <input type="text" name="email" class="form-control" [class.is-invalid]="!inputemail.valid && inputemail.touched" ngModel required maxlength="64" email #inputemail="ngModel">
+                        <div class="helper-block " *ngIf="!inputemail.valid && inputemail.touched">
+                            Elektroninis paštas yra privalomas, turi būti pateiktas validus adresas
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="">Slaptazodis</label>
-                        <input type="password" name="password" class="form-control" ngModel>
+                        <input type="password" name="password" class="form-control" [class.is-invalid]="!inputpassword.valid && inputpassword.touched" ngModel required minlength="6" #inputpassword="ngModel">
+                        <div class="helper-block " *ngIf="!inputpassword.valid && inputpassword.touched">
+                            Slaptažodis yra privalomas ir turi būti ne mažiau nei 6 simboliai
+                        </div>
                     </div>
                     <button class="btn btn-success">Prisijungti</button>
                 </form>
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
-
+<!-- 
 <section class="vh-100" style="background-color: #9A616D;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -38,7 +44,7 @@
                                 <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
                                 <form (ngSubmit)="onLogin(f)" #f="ngForm">
                                     <div class="form-outline mb-4">
-                                        <input type="text" class="form-control form-control-lg" name="email" ngModel required maxlength="64" email>
+                                        <input type="text" class="form-control form-control-lg" name="email" [class.is-invalid]="!inputName.valid && inputName.touched" ngModel required maxlength="64" email>
                                         <label class="form-label">Email address</label>
                                     </div>
                                     <div class="form-outline mb-4">
@@ -58,4 +64,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->

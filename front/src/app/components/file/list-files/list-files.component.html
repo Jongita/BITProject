@@ -23,7 +23,7 @@
             <td>{{ getLectureName(file.lecture_id) }}</td>
             <td>{{ file.name }}</td>
             <td>{{ file.visibility == '0' ? 'Nerodoma' : 'Rodoma' }}</td>
-            <td><a [href]="file.file" style="max-width: 100px;" class="btn">Parsisiųsti failą </a></td>
+            <td><a [href]="file.file" style="max-width: 100px;" role="button" class="btn btn-success">Parsisiųsti</a></td>
             <td>
                 <!-- <a class="btn btn-success">Redaguoti</a>&nbsp;&nbsp;&nbsp; -->
                 <button class="btn btn-danger">Ištrinti</button>
