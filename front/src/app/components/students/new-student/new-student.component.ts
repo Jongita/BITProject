@@ -55,6 +55,7 @@ export class NewStudentComponent {
   public studentSubmit(form:NgForm){
     this.studentService.addStudent({...form.form.value, groups:this.assignedGroups}).subscribe({
       next:(result)=>{
+        console.log(result);
         this.router.navigate(['students','list']);
       }
     })

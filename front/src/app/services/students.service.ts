@@ -18,6 +18,10 @@ export class StudentsService {
     return this.http.get<Student>('http://localhost:5999/students/'+id);
   }
 
+  public updateStudent(student:Student){
+    return this.http.put('http://localhost:5999/students/', student);
+  }
+
   public addStudent(student:Student){
     return this.http.post('http://localhost:5999/students/', student);
   }
@@ -27,3 +31,4 @@ export class StudentsService {
   }
 
 }
+

@@ -20,10 +20,12 @@ import { ListStudentGroupsComponent } from './components/studentInfo/list-studen
 import { FilesComponent } from './components/studentInfo/files/files.component';
 import { NewCourseComponent } from './components/courses/new-course/new-course.component';
 import { UpdateCourseComponent } from './components/courses/update-course/update-course.component';
+import { UpdateStudentComponent } from './components/students/update-student/update-student.component';
 
 export const routes: Routes = [
     {path: "students/list", component:ListStudentsComponent, canActivate:[viewGuard]},
     {path: "students/new", component:NewStudentComponent},
+    {path: "students/:id", component:UpdateStudentComponent},
 
     {path: "groups/list", component:ListGroupsComponent},
     {path: "groups/new", component:NewGroupComponent},

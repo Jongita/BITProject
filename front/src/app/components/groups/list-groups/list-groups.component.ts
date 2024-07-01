@@ -74,18 +74,18 @@ export class ListGroupsComponent {
   }
 
   public convertStartDate(startdate:Date){
-    const date = new Date(startdate);
-        const year = date.getUTCFullYear();
-        const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
-        const day = (date.getUTCDate() + 1).toString().padStart(2, '0');
-        return `${year}-${month}-${day}`;
+   const date = new Date(startdate);
+    const year = date.getUTCFullYear();
+    const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+    const day = (date.getUTCDate() + 1).toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }
 
   public convertEndDate(enddate:Date){
     const date = new Date(enddate);
-        const year = date.getUTCFullYear();
-        const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
-        const day = (date.getUTCDate() + 1).toString().padStart(2, '0');
-        return `${year}-${month}-${day}`;
+    const year = date.getUTCFullYear();
+    const month = (date.getUTCMonth()+1).toString().padStart(2, '0');
+    const day = (date.getUTCDate()+1).toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }
 }

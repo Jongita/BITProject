@@ -1,0 +1,29 @@
+<div class="card mt-3">
+    <div class="card-header">Prideti naują studentą</div>
+    <div class="card-body">
+        <form id="ngForm" (ngSubmit)="studentSubmit(f)" #f="ngForm">
+            <h3>Studento duomenys</h3>
+            <div class="mb-3">
+                <label for="" class="form-label">Vardas</label>
+                <input type="text" class="form-control" name="name" value="" ngModel minlength="2" maxlength="64" required [(ngModel)]="name">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Pavardė</label>
+                <input type="text" class="form-control" name="surname" value="" ngModel minlength="2" maxlength="64" required [(ngModel)]="surname">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">El.paštas</label>
+                <input type="email" class="form-control" name="email" value="" ngModel minlength="2" maxlength="64" required [(ngModel)]="email">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Slaptažodis</label>
+                <input type="password" class="form-control" name="password" value="" ngModel minlength="2" maxlength="64" required [(ngModel)]="password">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Telefonas</label>
+                <input type="text" class="form-control" name="phone" value="" ngModel minlength="2" maxlength="64" required [(ngModel)]="phone">
+            </div>
+        </form>
+        <button class="btn btn-success" type="submit" form="ngForm">Atnaujinti</button>
+    </div>
+</div>

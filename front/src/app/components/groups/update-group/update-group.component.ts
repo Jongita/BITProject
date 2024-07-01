@@ -24,8 +24,8 @@ export class UpdateGroupComponent {
     public course_id:number=0;
     public email:string="";
     public lecturer_id:number=0;
-    public startdate:Date=new Date;
-    public enddate:Date=new Date;
+    public startdate:string |null=null;
+    public enddate:string |null=null;
     public id?:number;
 
   constructor (private route:ActivatedRoute, private router:Router, private groupsService:GroupsService, private coursesService:CoursesService, private lecturersService:LecturersService, private errorService:ErrorService){
@@ -47,8 +47,9 @@ export class UpdateGroupComponent {
       this.course_id=group.course_id;
       this.email=group.email;
       this.lecturer_id=group.lecturer_id;
-      this.startdate=group.startdate;
-      this.enddate=group.enddate;
+      this.startdate=(group.startdate as unknown as string).split('T')[0];
+      this.enddate=(group.enddate as unknown as string).split('T')[0];
+      console.log(group.startdate);
     },
     error:(error)=>{
      this.errorService.errorEmitter.emit(error.error.text);
