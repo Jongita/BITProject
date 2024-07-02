@@ -3,15 +3,16 @@ import { Group } from "../models/groups";
 
 export class GroupsController{
     static async getAllgroups(req:any, res:any){
-        const sql="SELECT * FROM education.groups;";
+        // const sql="SELECT * FROM education.groups"
+        const sql="SELECT eg.id, eg.name, eg.course_id, eg.lecturer_id, DATE_FORMAT(eg.startdate, '%Y-%m-%d') AS startdate, DATE_FORMAT(eg.enddate, '%Y-%m-%d') AS enddate FROM education.groups eg;";
         const [result]=await pool.query<Group[]>(sql);
         res.json(result);
-     
     }
 
     static async getGroup( req:any, res:any){
         console.log(req.params.id);
-        const sql="SELECT * FROM education.groups WHERE id=?";
+        // const sql="SELECT * FROM education.groups WHERE id=?"
+        const sql="SELECT eg.id, eg.name, eg.course_id, eg.lecturer_id, DATE_FORMAT(eg.startdate, '%Y-%m-%d') AS startdate, DATE_FORMAT(eg.enddate, '%Y-%m-%d') AS enddate FROM education.groups eg WHERE id=?";
         const [result]=await pool.query<Group[]>(sql, [req.params.id]);
         if (result.length==0){
             res.status(404).json({
@@ -20,7 +21,6 @@ export class GroupsController{
         } else{
             res.json(result[0]);
         }
-       
     }
 
     static async insertGroup(req:any, res:any){

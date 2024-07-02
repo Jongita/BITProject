@@ -4,7 +4,8 @@ import { Lecture } from "../models/lecture";
 
 export class LecturesController{
     static async getAlllectures(req:any, res:any){
-        const sql="SELECT * FROM education.lectures;";
+        // const sql="SELECT * FROM education.lectures;";
+        const sql="SELECT l.id, l.name, l.group_id, DATE_FORMAT(l.date, '%Y-%m-%d') AS date, l.description FROM education.lectures l";
         const [result]=await pool.query<Lecture[]>(sql);
         res.json(result);
         console.log(result);
@@ -13,7 +14,7 @@ export class LecturesController{
 
     static async getLecture( req:any, res:any){
         console.log(req.params.id);
-        const sql="SELECT * FROM education.lectures WHERE id=?";
+        const sql="SELECT l.id, l.name, l.group_id, DATE_FORMAT(l.date, '%Y-%m-%d') AS date, l.description FROM education.lectures l WHERE id=?";
         const [result]=await pool.query<Lecture[]>(sql, [req.params.id]);
          if (result.length==0){
             res.status(404).json({

@@ -41,8 +41,8 @@ export class NewFileComponent {
     console.log(this.fileForm.value);
     const values=this.fileForm.value;
     this.filesService.addFile(new File(values.name, values.lecture_id, values.visibility), values.file).subscribe((result)=>{
-      this.router.navigate(["/"]);
-    
+      this.router.navigate(["files", "list"]);
+     
     });
   }
   

@@ -32,15 +32,6 @@
                             Telefonas yra privalomas, 10-12 simbolių, prasidėti su kodu: +370*
                         </div>
                     </div>
-
-                    <!-- <div class="mb-3">
-                        <label class="form-label" for="">Slaptažodis</label>
-                        <input type="password" name="password" class="form-control" [class.is-invalid]="!inputpassword.valid && inputpassword.touched" ngModel required minlength="6" #inputpassword="ngModel">
-                        <div class="helper-block" *ngIf="!inputpassword.valid && inputpassword.touched">
-                            Slaptažodis yra privalomas ir turi būti ne mažiau nei 6 simboliai
-                        </div>
-                    </div> -->
-
                     <div class="mb-3">
                         <label class="form-label" for="password">Slaptažodis</label>
                         <input type="password" name="password" class="form-control" [(ngModel)]="password" #inputpassword="ngModel" required minlength="6" ngModel [class.is-invalid]="!inputpassword.valid && inputpassword.touched">

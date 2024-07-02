@@ -1,27 +1,27 @@
 <div class="card mt-3">
-    <div class="card-header">Sukurti nauja grupe</div>
+    <div class="card-header">Sukurti naują grupę</div>
     <div class="card-body">
         <form id="ngForm" (ngSubmit)="groupSubmit(f)" #f="ngForm">
             <h3>Grupes informacija</h3>
             <div class="mb-3">
                 <label for="" class="form-label">Pavadinimas</label>
-                <input type="text" class="form-control" name="name" value="" ngModel>
+                <input type="text" class="form-control" name="name" value="" ngModel minlength="2" maxlength="64" #inputname="ngModel">
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Kursas</label>
-                <select class="form-control" name="course_id" [(ngModel)]="course_id">
+                <select class="form-control" name="course_id" [(ngModel)]="course_id" required>
                     <option *ngFor="let course of courses; let i=index" [value]="course.id">{{ course.name }}</option>
+                </select>
+                <!-- <div *ngIf="!course_id.invalid && course_id.touched">Pasirinkite kursą</div> -->
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Dėstytojas</label>
+                <select class="form-control" name="lecturer_id" [(ngModel)]="lecturer_id">
+                    <option *ngFor="let lecturer of lecturers; let i=index" [value]="lecturer.id">{{ lecturer.name }} {{ lecturer.surname }}</option>
                 </select>
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Destytojas</label>
-                <input type="text" class="form-control" name="lecturer_id" value="" ngModel>
-                <!-- <select class="form-control">
-                    <option></option>
-                </select> -->
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">Pradzios data</label>
+                <label for="" class="form-label">Pradžios data</label>
                 <input type="date" class="form-control" name="startdate" value="" ngModel>
             </div>
             <div class="mb-3">

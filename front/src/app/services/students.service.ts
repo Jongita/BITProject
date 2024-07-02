@@ -35,5 +35,9 @@ export class StudentsService {
     return this.http.delete('http://localhost:5999/students/'+id);
   }
 
+  // public  deleteStudentFromGroup(groupStudent:groupStudent){
+  //   return this.http.delete('http://localhost:5999/groupstudent/', groupStudent);
+  // }
+
 }
 

@@ -7,7 +7,7 @@
             <input type="text" class="form-control" name="name" value="" ngModel [(ngModel)]="name">
         </div>
         <div class="mb-3">
-            <label for="" class="form-label">Grupe</label>
+            <label for="" class="form-label">Grupė</label>
             <select class="form-control" name="group_id" [(ngModel)]="group_id">
                 <option *ngFor="let group of groups; let i=index" [value]="group.id">{{ group.name }}</option>
             </select>

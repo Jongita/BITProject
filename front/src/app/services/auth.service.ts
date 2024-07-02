@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   public canViewData(){
-    return this.isLoggedin();
+    return (this.user!=null && (this.user.type==2))
   }
   
 }

@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class NavigationComponent {
   public isLoggedin:boolean=false;
 
-  constructor (private authService:AuthService, private router: Router){
+  constructor (public authService:AuthService, private router: Router){
     if (authService.isLoggedin()){
       this.isLoggedin=true;
     }else{

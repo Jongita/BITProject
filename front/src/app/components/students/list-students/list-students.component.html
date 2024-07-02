@@ -18,7 +18,7 @@
             </div>
             <hr>
             <button class="btn btn-success" type="submit" form="ngForm">Pridėti</button>&nbsp;&nbsp;&nbsp;
-            <button class="btn btn-danger">Ištrinti</button>
+            <!-- <button class="btn btn-danger" (click)="deletegroupFromStudent()">Ištrinti</button> -->
         </form>
     </div>
 </div>
@@ -57,11 +57,6 @@
             </td>
             <td>
                 <table class="table  table-bordered">
-                    <!-- <thead>
-                        <tr>
-                            <th>Pavadinimas</th>
-                        </tr>
-                    </thead> -->
                     <tbody>
                         <tr *ngFor="let group of student.groups; let y=index">
                             <td>

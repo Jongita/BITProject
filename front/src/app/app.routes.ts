@@ -23,29 +23,29 @@ import { UpdateCourseComponent } from './components/courses/update-course/update
 import { UpdateStudentComponent } from './components/students/update-student/update-student.component';
 
 export const routes: Routes = [
-    {path: "students/list", component:ListStudentsComponent, canActivate:[viewGuard]},
-    {path: "students/new", component:NewStudentComponent},
-    {path: "students/:id", component:UpdateStudentComponent},
+    {path: "students/list", component:ListStudentsComponent, canActivate:[editUsersGuard]},
+    {path: "students/new", component:NewStudentComponent, canActivate:[editUsersGuard]},
+    {path: "students/:id", component:UpdateStudentComponent, canActivate:[editUsersGuard]},
 
-    {path: "groups/list", component:ListGroupsComponent},
-    {path: "groups/new", component:NewGroupComponent},
-    {path: "groups/:id", component:UpdateGroupComponent},
+    {path: "groups/list", component:ListGroupsComponent, canActivate:[editUsersGuard]},
+    {path: "groups/new", component:NewGroupComponent, canActivate:[editUsersGuard]},
+    {path: "groups/:id", component:UpdateGroupComponent, canActivate:[editUsersGuard]},
   
-    {path: "courses/list", component:ListCoursesComponent},
-    {path: "courses/new", component:NewCourseComponent},
-    {path: "courses/:id", component:UpdateCourseComponent},
+    {path: "courses/list", component:ListCoursesComponent, canActivate:[editUsersGuard]},
+    {path: "courses/new", component:NewCourseComponent, canActivate:[editUsersGuard]},
+    {path: "courses/:id", component:UpdateCourseComponent, canActivate:[editUsersGuard]},
    
-    {path: "lectures/list", component:ListLecturesComponent},
-    {path: "lectures/new", component:NewLectureComponent},
-    {path: "lectures/:id", component:UpdateLectureComponent},
+    {path: "lectures/list", component:ListLecturesComponent, canActivate:[editUsersGuard]},
+    {path: "lectures/new", component:NewLectureComponent, canActivate:[editUsersGuard]},
+    {path: "lectures/:id", component:UpdateLectureComponent, canActivate:[editUsersGuard]},
 
-    {path: "files/list", component:ListFilesComponent},
-    {path: "files/new", component:NewFileComponent},
+    {path: "files/list", component:ListFilesComponent, canActivate:[editUsersGuard]},
+    {path: "files/new", component:NewFileComponent, canActivate:[editUsersGuard]},
 
     {path: "auth/signin", component:SigninComponent},
     {path: "auth/login", component:LoginComponent},
 
-    {path:"users/profile", component:ProfileComponent, canActivate:[viewGuard]},
+    {path:"users/profile", component:ProfileComponent},
 
     {path:"studentsInfo/list", component:ListStudentGroupsComponent, canActivate:[viewGuard]},
     {path:"studentFiles/:id", component:FilesComponent, canActivate:[viewGuard]},

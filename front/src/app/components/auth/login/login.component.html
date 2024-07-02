@@ -18,14 +18,18 @@
                             Slaptažodis yra privalomas ir turi būti ne mažiau nei 6 simboliai
                         </div>
                     </div>
-                    <button class="btn btn-success" [disabled]="!f.valid">Prisijungti</button>
+                    <button class="btn btn-success mt-3" [disabled]="!f.valid">Prisijungti</button>
                 </form>
+                <p class="mb-5 pb-lg-2 mt-4">Neturi prisijungimo? <a href="/auth/signin">Registruokis čia</a></p>
             </div>
         </div>
     </div>
-</div>
+    <!-- 
+    <a class="btn btn-info mx-3" routerLink="/auth/signin" *ngIf="!isLoggedin">
+        Registruotis
+    </a> -->
 
-<!-- 
+    <!-- 
 <section class="vh-100" style="background-color: #9A616D;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -44,7 +48,7 @@
                                 <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
                                 <form (ngSubmit)="onLogin(f)" #f="ngForm">
                                     <div class="form-outline mb-4">
-                                        <input type="text" class="form-control form-control-lg" name="email" [class.is-invalid]="!inputName.valid && inputName.touched" ngModel required maxlength="64" email>
+                                        <input type="text" class="form-control form-control-lg" name="email" ngModel required maxlength="64" email>
                                         <label class="form-label">Email address</label>
                                     </div>
                                     <div class="form-outline mb-4">

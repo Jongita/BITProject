@@ -10,4 +10,13 @@ export class groupStudentsController{
         })
     }
 
+    static async deletegroupFromStudent(req:any, res:any){
+        let sql="DELETE FROM group_student WHERE group_id=? AND student_id=?";
+        await pool.query(sql, [req.body.group_id, req.body.student_id]);
+        res.json({
+            "success":true
+        })
+    }
+
+
 }

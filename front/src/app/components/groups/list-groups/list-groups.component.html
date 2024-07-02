@@ -24,8 +24,8 @@
             <td>{{ group.name }}</td>
             <td>{{ getCourseName(group.course_id) }}</td>
             <td>{{ getLecturerName(group.lecturer_id) }}</td>
-            <td>{{ convertStartDate(group.startdate) }}</td>
-            <td>{{ convertEndDate(group.enddate) }}</td>
+            <td>{{ group.startdate }}</td>
+            <td>{{ group.enddate }}</td>
             <td>
                 <a class="btn btn-success" [routerLink]="['/groups',group.id]">Redaguoti</a>&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-danger" (click)="deleteGroup(group.id!)">Istrinti</button>

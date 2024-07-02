@@ -1,28 +1,23 @@
-import path from "path";
 import { pool } from "../db/connect";
 import { User } from "../models/user";
 import bcrypt from "bcrypt";
-import  fs from 'fs';
+
 
 export class UserController{
     static async getAll(req:any, res:any){
         const [result]=await pool.query<User[]>("SELECT * FROM users WHERE type = 2");
         return res.json(result);
         console.log(result);
-
     }
     static async getUser(req:any, res:any){
         console.log(req.params.id);
         const userId=req.params.id;
         
-      
-
         if ( !(req.user.type==2 || userId==req.user.id)){
             res.status(400).json({
                 text:"Jūs neturite teisės redaguoti įrašą"
             })
-        }
-        
+        }    
         const [result]=await pool.query<User[]>("SELECT * FROM users WHERE id=?",[userId]);
         if (result.length==0){
             res.status(404).json({
@@ -34,8 +29,7 @@ export class UserController{
         }
     }
 
-    static async update(req:any, res:any){
-     
+    static async update(req:any, res:any){  
         const userId=req.params.id;
 
          if (req.body.password!=''){

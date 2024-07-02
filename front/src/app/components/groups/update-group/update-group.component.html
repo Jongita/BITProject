@@ -13,13 +13,13 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="" class="form-label">Destytojas</label>
+            <label for="" class="form-label">Dėstytojas</label>
             <select class="form-control" name="lecturer_id" [(ngModel)]="lecturer_id">
                 <option *ngFor="let lecturer of lecturers; let i=index" [value]="lecturer.id">{{ lecturer.name }} {{ lecturer.surname }}</option>
             </select>
         </div>
         <div class="mb-3">
-            <label for="" class="form-label">Pradzios data</label>
+            <label for="" class="form-label">Pradžios data</label>
             <input type="date" class=" form-control" name="startdate" value="" ngModel [(ngModel)]="startdate">
         </div>
         <div class="mb-3">

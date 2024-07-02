@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { Student } from '../../../models/student';
 import { Group } from '../../../models/group';
 import { GroupsService } from '../../../services/groups.service';
+import { groupStudent } from '../../../models/groupStudent';
 
 @Component({
   selector: 'app-list-students',
@@ -19,6 +20,7 @@ export class ListStudentsComponent {
   public groups:Group[]=[];
   public group_id:number|null=null;
   public student_id:number|null=null;
+  public groupStudent:groupStudent[]=[];
 
   private loadStudents(){
   this.studentsService.getStudents().subscribe((data)=>{
@@ -51,11 +53,18 @@ export class ListStudentsComponent {
         console.log(form.form.value);
         this.loadStudents();
         form.resetForm();
-       
       }
   });
 }
+  
+   
+    
+  }
 
-}
+
+ 
+
+
+
 
 

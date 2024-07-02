@@ -28,8 +28,8 @@
             </div>
 
             <div>
-                <button class="btn btn-info" type="button" (click)="filePicker.click()">Įkelti paveikslėlį</button>
-                <input type="file" name="file" #filePicker (change)="onFileChange($event)">
+                <button class="btn btn-info" type="button" (click)="filePicker.click()">Įkelti failą</button>
+                <input type="file" name="file" class="d-none" #filePicker (change)="onFileChange($event)">
             </div>
             <hr>
             <button type="submit" class="btn btn-success">Išsaugoti pakeitimus</button>
