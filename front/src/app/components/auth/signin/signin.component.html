@@ -7,34 +7,55 @@
                     <div class="mb-3">
                         <label class="form-label" for="">El.pašto adresas</label>
                         <input type="text" name="email" class="form-control" [class.is-invalid]="!inputemail.valid && inputemail.touched" ngModel required maxlength="64" email #inputemail="ngModel">
-                        <div class="helper-block " *ngIf="!inputemail.valid && inputemail.touched">
+                        <div class="helper-block" *ngIf="!inputemail.valid && inputemail.touched">
                             Elektroninis paštas yra privalomas, turi būti pateiktas validus adresas
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="">Vartotojo vardas</label>
-                        <input type="text" name="name" class="form-control" ngModel minlength="2" maxlength="64" pattern="[a-zA-Z]*">
+                        <input type="text" name="name" class="form-control" [class.is-invalid]="!inputname.valid && inputname.touched" ngModel required minlength="2" maxlength="64" pattern="[a-zA-Z ]*" #inputname="ngModel">
+                        <div class="helper-block" *ngIf="!inputname.valid && inputname.touched">
+                            Laukelis privalomas, turi būti 2 iki 64 simbolių ilgio
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="">Vartotojo pavardė</label>
-                        <input type="text" name="surname" class="form-control" ngModel minlength="2" maxlength="64" pattern="[a-zA-Z]*">
+                        <input type="text" name="surname" class="form-control" [class.is-invalid]="!inputsurname.valid && inputsurname.touched" ngModel required minlength="2" maxlength="64" pattern="[a-zA-Z ]*" #inputsurname="ngModel">
+                        <div class="helper-block" *ngIf="!inputsurname.valid && inputsurname.touched">
+                            Laukelis privalomas, turi būti 2 iki 64 simbolių ilgio
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="">Vartotojo telefonas</label>
-                        <input type="text" name="phone" class="form-control" ngModel>
+                        <input type="text" name="phone" class="form-control" [class.is-invalid]="!inputphone.valid && inputphone.touched" required ngModel minlength="10" maxlength="12" #inputphone="ngModel">
+                        <div class="helper-block" *ngIf="!inputphone.valid && inputphone.touched">
+                            Telefonas yra privalomas, 10-12 simbolių, prasidėti su kodu: +370*
+                        </div>
                     </div>
-                    <div class="mb-3">
+
+                    <!-- <div class="mb-3">
                         <label class="form-label" for="">Slaptažodis</label>
                         <input type="password" name="password" class="form-control" [class.is-invalid]="!inputpassword.valid && inputpassword.touched" ngModel required minlength="6" #inputpassword="ngModel">
-                        <div class="helper-block " *ngIf="!inputpassword.valid && inputpassword.touched">
+                        <div class="helper-block" *ngIf="!inputpassword.valid && inputpassword.touched">
+                            Slaptažodis yra privalomas ir turi būti ne mažiau nei 6 simboliai
+                        </div>
+                    </div> -->
+
+                    <div class="mb-3">
+                        <label class="form-label" for="password">Slaptažodis</label>
+                        <input type="password" name="password" class="form-control" [(ngModel)]="password" #inputpassword="ngModel" required minlength="6" ngModel [class.is-invalid]="!inputpassword.valid && inputpassword.touched">
+                        <div class="helper-block" *ngIf="!inputpassword.valid && inputpassword.touched">
                             Slaptažodis yra privalomas ir turi būti ne mažiau nei 6 simboliai
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="">Pakartokite slaptažodį</label>
-                        <input type="password" name="" class="form-control">
+                        <label class="form-label" for="password2">Pakartokite slaptažodį</label>
+                        <input type="password" name="password2" class="form-control" [(ngModel)]="password2" #inputpassword2="ngModel" required (ngModelChange)="checkPasswords(password, password2)">
+                        <div *ngIf="!passwordsMatch && inputpassword2.touched" class="alert alert-danger">
+                            Slaptažodžiai nesutampa
+                        </div>
                     </div>
-                    <button class="btn btn-success">Registruotis</button>
+                    <button class="btn btn-success" [disabled]="!f.valid || !password || !passwordsMatch">Registruotis</button>
                 </form>
             </div>
         </div>

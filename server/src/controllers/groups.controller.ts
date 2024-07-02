@@ -23,7 +23,6 @@ export class GroupsController{
        
     }
 
-
     static async insertGroup(req:any, res:any){
         const sql="INSERT INTO education.groups (name, course_id, lecturer_id, startdate, enddate) VALUES ( ?, ?, ?, ?, ?);";
         await pool.query(sql, [req.body.name, req.body.course_id, req.body.lecturer_id, req.body.startdate, req.body.enddate]);
@@ -55,4 +54,3 @@ export class GroupsController{
     }
 }
 
-// UPDATE education.groups SET name='PHP 2018.01', course_id='3', lecturer_id='2', startdate='2024-06-10', enddate='2024-06-25' WHERE id=1;

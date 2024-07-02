@@ -9,3 +9,10 @@ export interface Group extends RowDataPacket{
     startdate:Date;
     enddate:Date
 }
+
+export interface GroupStudent extends RowDataPacket{
+    id?:number;
+    group_id:number;
+    student_id:number;
+   
+}

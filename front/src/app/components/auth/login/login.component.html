@@ -5,20 +5,20 @@
             <div class="card-body">
                 <form (ngSubmit)="onLogin(f)" #f="ngForm">
                     <div class="mb-3">
-                        <label class="form-label" for="">El.pasto adresas</label>
+                        <label class="form-label" for="">El.pašto adresas</label>
                         <input type="text" name="email" class="form-control" [class.is-invalid]="!inputemail.valid && inputemail.touched" ngModel required maxlength="64" email #inputemail="ngModel">
                         <div class="helper-block " *ngIf="!inputemail.valid && inputemail.touched">
                             Elektroninis paštas yra privalomas, turi būti pateiktas validus adresas
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="">Slaptazodis</label>
+                        <label class="form-label" for="">Slaptažodis</label>
                         <input type="password" name="password" class="form-control" [class.is-invalid]="!inputpassword.valid && inputpassword.touched" ngModel required minlength="6" #inputpassword="ngModel">
                         <div class="helper-block " *ngIf="!inputpassword.valid && inputpassword.touched">
                             Slaptažodis yra privalomas ir turi būti ne mažiau nei 6 simboliai
                         </div>
                     </div>
-                    <button class="btn btn-success">Prisijungti</button>
+                    <button class="btn btn-success" [disabled]="!f.valid">Prisijungti</button>
                 </form>
             </div>
         </div>

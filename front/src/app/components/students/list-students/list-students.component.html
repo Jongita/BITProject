@@ -1,10 +1,37 @@
-<div class="card-header mt-3">Studentu sarasas</div>
+<div class="card mt-3 col-md-9">
+    <div class="card-header">Priskirti studentą prie grupės</div>
+    <div class="card-body col">
+        <form id="ngForm" (ngSubmit)="assignStudentSubmit(f)" #f="ngForm">
+            <div class="row">
+                <div class="col">
+                    <label for="" class="form-label">Studentas</label>
+                    <select class="form-control" name="student_id" [(ngModel)]="student_id">
+                        <option *ngFor="let student of students; let i=index" [value]="student.id">{{ student.name }} {{ student.surname }} ({{ student.email}})</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="" class="form-label">Grupė</label>
+                    <select class="form-control" name="group_id" [(ngModel)]="group_id">
+                        <option *ngFor="let group of groups; let i=index" [value]="group.id">{{ group.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <button class="btn btn-success" type="submit" form="ngForm">Pridėti</button>&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-danger">Ištrinti</button>
+        </form>
+    </div>
+</div>
+
+<div class="card-header mt-3">
+    <h2 class="text-center">Studentų sąrašas</h2>
+</div>
 <div class="d-flex mt-3">
     <a class="btn btn-success" routerLink="/students/new">
         Pridėti studentą
     </a>
 </div>
-<div class="table mt-3">
+<div class="table mt-3 text-center">
     <thead>
         <tr>
             <th>Nr.</th>
@@ -13,8 +40,8 @@
             <th>El.paštas</th>
             <th>Telefonas</th>
             <th>Veiksmai</th>
-            <th>Grupes</th>
-            <th>Veiksmai</th>
+            <th>Grupės pavadinimas</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -26,14 +53,15 @@
             <td>{{ student.phone }}</td>
             <td>
                 <a class="btn btn-success" [routerLink]="['/students',student.id]">Redaguoti</a>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-danger" (click)="deleteStudent(student.id!)">Ištrinti</button>
             </td>
             <td>
-                <table class="table">
-                    <thead>
+                <table class="table  table-bordered">
+                    <!-- <thead>
                         <tr>
                             <th>Pavadinimas</th>
                         </tr>
-                    </thead>
+                    </thead> -->
                     <tbody>
                         <tr *ngFor="let group of student.groups; let y=index">
                             <td>
@@ -42,9 +70,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </td>
-            <td>
-                <button class="btn btn-danger" (click)="deleteStudent(student.id!)">Istrinti</button>
             </td>
         </tr>
     </tbody>

@@ -7,6 +7,7 @@ export interface User extends RowDataPacket{
     surname:string;
     email:string;
     password:string
-    type:number;
+    type?:number;
     phone:string;
+   
 }

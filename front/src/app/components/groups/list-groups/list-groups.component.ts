@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { GroupsService } from '../../../services/groups.service';
 import { Group } from '../../../models/group';
 import { RouterLink } from '@angular/router';
@@ -8,6 +8,7 @@ import { CoursesService } from '../../../services/courses.service';
 import { Course } from '../../../models/course';
 import { Lecturer } from '../../../models/lecturers';
 import { LecturersService } from '../../../services/lecturers.service';
+
 
 @Component({
   selector: 'app-list-groups',
@@ -20,7 +21,7 @@ export class ListGroupsComponent {
   public groups:Group[]=[];
   public courses:Course[]=[];
   public lecturers:Lecturer[]=[];
-  
+
 
   private loadGroups(){
   this.groupsService.getGroups().subscribe((data)=>{
@@ -46,6 +47,7 @@ export class ListGroupsComponent {
     this.loadGroups();
     this.loadCourses();
     this.loadLecturers();
+    
   }
 
   public deleteGroup(id:number){
@@ -88,4 +90,6 @@ export class ListGroupsComponent {
     const day = (date.getUTCDate()+1).toString().padStart(2, '0');
     return `${year}-${month}-${day}`;
 }
+  
 }
+

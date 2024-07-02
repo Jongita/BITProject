@@ -11,6 +11,7 @@ import path from 'path';
 import { userRouter } from './routes/user.router';
 import { studentGroupsRouter } from './routes/studentGroup.router';
 import { studentFilesRouter } from './routes/studentFiles.router';
+import { groupStudentRouter } from './routes/groupStudent.router';
 
 
 
@@ -29,6 +30,7 @@ app.use("/img", express.static(path.join("./img")));
 app.use('/students', studentsRouter);
 app.use('/lecturers', lecturersRouter);
 app.use('/groups', groupsRouter);
+app.use('/groupstudent', groupStudentRouter);
 app.use('/courses', coursesRouter);
 app.use('/lectures', lecturesRouter);
 app.use('/files', filesRouter);

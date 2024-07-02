@@ -38,18 +38,10 @@ export class UserController{
      
         const userId=req.params.id;
 
-      
-
-        // if ( !(req.user.type==0 || userId==req.user.id)){
-        //     res.status(400).json({
-        //         text:"Jūs neturite teisės redaguoti įrašą"
-        //     })
-        // }
-
-        if (req.body.password!=''){
+         if (req.body.password!=''){
             const passwordHash=await bcrypt.hash(req.body.password, 12);
 
-            await pool.query("UPDATE users SET name=?, surname=?, email=?, password=?, type=?, phone=? WHERE id=? ",[
+            await pool.query("UPDATE education.users SET name=?, surname=?, email=?, password=?, type=?, phone=? WHERE id=?;",[
                 req.body.name,
                 req.body.surname,
                 req.body.email,
@@ -59,7 +51,7 @@ export class UserController{
                 userId
             ]);
         }else{
-            await pool.query("UPDATE users SET name=?, surname=?, email=?, type=?, phone=? WHERE id=? ",[
+            await pool.query("UPDATE education.users SET name=?, surname=?, email=?, type=?, phone=? WHERE id=?;",[
                 req.body.name,
                 req.body.surname,
                 req.body.email,
@@ -71,8 +63,7 @@ export class UserController{
         res.json({
             success:true
         });
-
-    }
+        }
 }
 
 

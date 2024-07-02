@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { StudentsService } from '../../../services/students.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, NgForm} from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Student } from '../../../models/student';
+import { Group } from '../../../models/group';
+import { GroupsService } from '../../../services/groups.service';
 
 @Component({
   selector: 'app-list-students',
@@ -14,6 +16,9 @@ import { Student } from '../../../models/student';
 })
 export class ListStudentsComponent {
   public students:Student[]=[];
+  public groups:Group[]=[];
+  public group_id:number|null=null;
+  public student_id:number|null=null;
 
   private loadStudents(){
   this.studentsService.getStudents().subscribe((data)=>{
@@ -21,8 +26,16 @@ export class ListStudentsComponent {
     });
   }
 
-   constructor (private studentsService:StudentsService){
+  private loadGroups(){
+  this.groupsService.getGroups().subscribe((data)=>{
+    this.groups=data;
+    console.log(data);
+    });
+  }
+
+   constructor (private studentsService:StudentsService, private groupsService:GroupsService){
     this.loadStudents();
+    this.loadGroups();
    }
 
    public deleteStudent(id:number){
@@ -32,4 +45,17 @@ export class ListStudentsComponent {
 
   }
 
+  public assignStudentSubmit(form:NgForm){
+    this.studentsService.addStudenttoGroup({...form.form.value}).subscribe({
+      next:(data)=>{
+        console.log(form.form.value);
+        this.loadStudents();
+        form.resetForm();
+       
+      }
+  });
 }
+
+}
+
+
