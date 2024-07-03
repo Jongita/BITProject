@@ -1,31 +1,31 @@
 <div class="card mt-3">
-    <div class="card-header">Prideti naują studentą</div>
+    <div class="card-header">Atnaujinti studento informaciją</div>
     <div class="card-body">
         <form id="ngForm" (ngSubmit)="studentSubmit(f)" #f="ngForm">
             <h3>Studento duomenys</h3>
             <div class="mb-3">
                 <label for="" class="form-label">Vardas</label>
-                <input type="text" class="form-control" name="name" value="" ngModel minlength="2" maxlength="64" required pattern="[a-zA-Z ]*" #inputname="ngModel">
+                <input type="text" class="form-control" name="name" value="" ngModel minlength="2" maxlength="64" [(ngModel)]="name" required pattern="[a-zA-Z ]*" #inputname="ngModel">
                 <div *ngIf="!inputname.valid && inputname.touched">Laukelis privalomas, turi būti 2 iki 64 simbolių ilgio</div>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Pavardė</label>
-                <input type="text" class="form-control" name="surname" value="" ngModel minlength="2" maxlength="64" required pattern="[a-zA-Z ]*" #inputsurname="ngModel">
+                <input type="text" class="form-control" name="surname" value="" ngModel minlength="2" maxlength="64" [(ngModel)]="surname" required pattern="[a-zA-Z ]*" #inputsurname="ngModel">
                 <div *ngIf="!inputsurname.valid && inputsurname.touched">Laukelis privalomas, turi būti 2 iki 64 simbolių ilgio</div>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">El.paštas</label>
-                <input type="email" class="form-control" name="email" value="" ngModel minlength="2" maxlength="64" required email #inputemail="ngModel">
-                <div *ngIf="!inputemail.valid && inputemail.touched">Laukelis privalomas, turi būti 2 iki 64 simbolių ilgio</div>
+                <input type="email" class="form-control" name="email" value="" ngModel minlength="2" maxlength="64" [(ngModel)]="email" required email #inputemail="ngModel">
+                <div *ngIf="!inputemail.valid && inputemail.touched">Laukelis privalomas ir turi būti validus el.paštas</div>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Slaptažodis</label>
-                <input type="password" class="form-control" name="password" value="" ngModel minlength="6" required #inputpassword="ngModel">
+                <input type="password" class="form-control" name="password" value="" ngModel minlength="6" [(ngModel)]="password" required #inputpassword="ngModel">
                 <div *ngIf="!inputpassword.valid && inputpassword.touched">Slaptažodis yra privalomas ir turi būti ne mažiau nei 6 simboliai</div>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Telefonas</label>
-                <input type="text" class="form-control" name="phone" value="" ngModel minlength="10" maxlength="12" required #inputphone="ngModel">
+                <input type="text" class="form-control" name="phone" value="" ngModel minlength="2" maxlength="64" [(ngModel)]="phone" required #inputphone="ngModel">
                 <div *ngIf="!inputphone.valid && inputphone.touched">Telefonas yra privalomas, 10-12 simbolių, prasidėti su kodu: +370*</div>
             </div>
         </form>

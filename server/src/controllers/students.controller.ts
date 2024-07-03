@@ -11,9 +11,7 @@ export class StudentsController{
         const [result]=await pool.query<Student[]>(sql);
 
         for (let i=0; i<result.length; i++){
-            // paprastesnis budas
-            // const sql2="SELECT product_id as productId, count FROM orders_products WHERE order_id=?";
-            // geresnis budas
+
             const sql2="SELECT gs.group_id as groupId, g.name FROM education.group_student gs LEFT JOIN education.groups g ON gs.group_id=g.id WHERE student_id=?";   
             const [groups]=await pool.query<StudentGroups[]>(sql2, [result[i].id]);
             result[i].groups=groups;

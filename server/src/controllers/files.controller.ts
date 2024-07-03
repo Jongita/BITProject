@@ -34,7 +34,6 @@ export class FilesController{
     }
 
     static async updateFile(req:any, res:any){
-        
 
         const sql="UPDATE education.files SET lecture_id=?, name=?, file=?, visibility=? WHERE id=?;";
         try{
