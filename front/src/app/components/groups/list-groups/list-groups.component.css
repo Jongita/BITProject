@@ -1,0 +1,7 @@
+@media (max-width: 1200px) {
+
+    .btn-success,
+    .btn-danger {
+        display: block;
+    }
+}

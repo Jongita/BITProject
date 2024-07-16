@@ -1,23 +1,25 @@
 <div class="card-header mt-3">
     <h2>Failų sąrašas</h2>
 </div>
-<div class="table mt-3">
-    <thead>
-        <tr>
-            <th>Nr.</th>
-            <th>Paskaita</th>
-            <th>Data</th>
-            <th>Pavadinimas</th>
-            <th>Failas</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let lectureAndFile of lectureAndFiles; let i=index;">
-            <td>{{i+1}}</td>
-            <td>{{lectureAndFile.lecture}}</td>
-            <td>{{lectureAndFile.date}}</td>
-            <td>{{lectureAndFile.fileName}}</td>
-            <td><a [href]="lectureAndFile.file" style="max-width: 100px;" role="button" class="btn btn-success">Parsisiųsti failą </a></td>
-        </tr>
-    </tbody>
+<div class="table table-responsive mt-3">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Nr.</th>
+                <th>Paskaita</th>
+                <th>Data</th>
+                <th>Pavadinimas</th>
+                <th>Failas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let lectureAndFile of lectureAndFiles; let i=index;">
+                <td>{{i+1}}</td>
+                <td>{{lectureAndFile.lecture}}</td>
+                <td>{{lectureAndFile.date}}</td>
+                <td>{{lectureAndFile.fileName}}</td>
+                <td><a [href]="lectureAndFile.file" style="max-width: 100px;" role="button" class="btn btn-success">Parsisiųsti failą </a></td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -7,28 +7,30 @@
     </a>
 </div>
 
-<div class="table mt-3">
-    <thead>
-        <tr>
-            <th>Nr.</th>
-            <th>Paskaita</th>
-            <th>Failo pavadinimas</th>
-            <th>Matomumas</th>
-            <th>Failas</th>
-            <th>Veiksmai</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let file of files; let i=index;">
-            <td>{{i+1}}</td>
-            <td>{{ getLectureName(file.lecture_id) }}</td>
-            <td>{{ file.name }}</td>
-            <td>{{ file.visibility == '0' ? 'Nerodoma' : 'Rodoma' }}</td>
-            <td><a [href]="file.file" style="max-width: 100px;" role="button" class="btn btn-success">Parsisiųsti</a></td>
-            <td>
-                <!-- <a class="btn btn-success">Redaguoti</a>&nbsp;&nbsp;&nbsp; -->
-                <button class="btn btn-danger">Ištrinti</button>
-            </td>
-        </tr>
-    </tbody>
+<div class="table table-responsive mt-3">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Nr.</th>
+                <th>Paskaita</th>
+                <th>Failo pavadinimas</th>
+                <th>Matomumas</th>
+                <th>Failas</th>
+                <th>Veiksmai</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let file of files; let i=index;">
+                <td>{{i+1}}</td>
+                <td>{{ getLectureName(file.lecture_id) }}</td>
+                <td>{{ file.name }}</td>
+                <td>{{ file.visibility == '0' ? 'Nerodoma' : 'Rodoma' }}</td>
+                <td><a [href]="file.file" style="max-width: 100px;" role="button" class="btn btn-success">Parsisiųsti</a></td>
+                <td>
+                    <!-- <a class="btn btn-success">Redaguoti</a>&nbsp;&nbsp;&nbsp; -->
+                    <button class="btn btn-danger">Ištrinti</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

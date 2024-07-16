@@ -1,0 +1,7 @@
+@media (max-width: 1200px) {
+
+    .btn-warning {
+        display: block;
+        margin-bottom: 1rem;
+    }
+}

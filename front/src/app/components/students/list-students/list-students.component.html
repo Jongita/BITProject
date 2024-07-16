@@ -31,41 +31,42 @@
         Pridėti studentą
     </a>
 </div>
-<div class="table mt-3 text-center">
-    <thead>
-        <tr>
-            <th>Nr.</th>
-            <th>Vardas</th>
-            <th>Pavardė</th>
-            <th>El.paštas</th>
-            <th>Telefonas</th>
-            <th>Veiksmai</th>
-            <th>Grupės pavadinimas</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let student of students; let i=index;">
-            <td>{{i+1}}</td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.surname }}</td>
-            <td>{{ student.email }}</td>
-            <td>{{ student.phone }}</td>
-            <td>
-                <a class="btn btn-success" [routerLink]="['/students',student.id]">Redaguoti</a>&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-danger" (click)="deleteStudent(student.id!)">Ištrinti</button>
-            </td>
-            <td>
-                <table class="table  table-bordered">
-                    <tbody>
-                        <tr *ngFor="let group of student.groups; let y=index">
-                            <td>
-                                {{ group.name }}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </tbody>
+<div class="table-scrollable mt-3 text-center">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Nr.</th>
+                <th>Vardas</th>
+                <th>Pavardė</th>
+                <th>El.paštas</th>
+                <th>Telefonas</th>
+                <th>Veiksmai</th>
+                <th>Grupės pavadinimas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students; let i=index;">
+                <td>{{i+1}}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.surname }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.phone }}</td>
+                <td>
+                    <a class="btn btn-success" [routerLink]="['/students',student.id]">Redaguoti</a>&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-danger" (click)="deleteStudent(student.id!)">Ištrinti</button>
+                </td>
+                <td>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr *ngFor="let group of student.groups; let y=index">
+                                <td>
+                                    {{ group.name }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

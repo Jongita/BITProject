@@ -6,28 +6,30 @@
         Pridėti naują paskaitą
     </a>
 </div>
-<div class="table mt-3">
-    <thead>
-        <tr>
-            <th>Nr.</th>
-            <th>Pavadinimas</th>
-            <th>Grupė</th>
-            <th>Data</th>
-            <th>Aprašas</th>
-            <th>Veiksmai</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let lecture of lectures; let i=index;">
-            <td>{{i+1}}</td>
-            <td>{{ lecture.name }}</td>
-            <td>{{ getGroupName(lecture.group_id) }}</td>
-            <td>{{ lecture.date }}</td>
-            <td>{{ lecture.description }}</td>
-            <td>
-                <a class="btn btn-success" [routerLink]="['/lectures',lecture.id]">Redaguoti</a>&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-danger" (click)="deleteLecture(lecture.id!)">Ištrinti</button>
-            </td>
-        </tr>
-    </tbody>
+<div class="table mt-3 table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Nr.</th>
+                <th>Pavadinimas</th>
+                <th>Grupė</th>
+                <th>Data</th>
+                <th>Aprašas</th>
+                <th>Veiksmai</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let lecture of lectures; let i=index;">
+                <td>{{i+1}}</td>
+                <td>{{ lecture.name }}</td>
+                <td>{{ getGroupName(lecture.group_id) }}</td>
+                <td>{{ lecture.date }}</td>
+                <td>{{ lecture.description }}</td>
+                <td>
+                    <a class="btn btn-success" [routerLink]="['/lectures',lecture.id]">Redaguoti</a>&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-danger" (click)="deleteLecture(lecture.id!)">Ištrinti</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
